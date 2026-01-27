@@ -5398,4 +5398,57 @@ sub {
 }
 .no-scroll {
   overflow: hidden;
+}}
+/* === STC: force mobile menu to open/close reliably === */
+@media (max-width: 768px) {
+  /* hide menu by default */
+  .kl-navbar__content {
+    display: none !important;
+    width: 100%;
+  }
+
+  /* show menu when open */
+  .kl-navbar__content.nav-open {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: #fff;
+    z-index: 9999;
+    padding: 16px 0;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+
+  /* stack links vertically */
+  .kl-navbar__menu {
+    display: block !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  .kl-navbar__item {
+    display: block !important;
+  }
+
+  .kl-navbar__button {
+    display: block !important;
+    padding: 14px 20px;
+  }
+}
+
+/* Make dropdown position correctly */
+.kl-navbar { position: relative; }
+/* Make sure the dropdown can appear in front of content */
+.kl-navbar { position: relative; }
+
+@media (max-width: 768px) {
+  .kl-navbar__content.nav-open {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: #fff;
+    z-index: 9999;
+  }
 }
