@@ -5398,57 +5398,203 @@ sub {
 }
 .no-scroll {
   overflow: hidden;
-}}
-/* === STC: force mobile menu to open/close reliably === */
+}
+/* === STC: Mobile hamburger menu support === */
 @media (max-width: 768px) {
+
+  .kl-navbar {
+    position: relative;
+  }
+
   /* hide menu by default */
   .kl-navbar__content {
-    display: none !important;
+    display: none;
     width: 100%;
   }
 
-  /* show menu when open */
+  /* show menu when hamburger is active */
   .kl-navbar__content.nav-open {
-    display: block !important;
+    display: block;
     position: absolute;
     left: 0;
     right: 0;
     top: 100%;
-    background: #fff;
+    background: #ffffff;
     z-index: 9999;
     padding: 16px 0;
     border-top: 1px solid rgba(0,0,0,0.08);
   }
 
-  /* stack links vertically */
-  .kl-navbar__menu {
-    display: block !important;
-    margin: 0;
-    padding: 0;
-  }
-
+  /* vertical menu layout */
+  .kl-navbar__menu,
   .kl-navbar__item {
-    display: block !important;
+    display: block;
   }
 
   .kl-navbar__button {
-    display: block !important;
+    display: block;
     padding: 14px 20px;
   }
 }
-
-/* Make dropdown position correctly */
-.kl-navbar { position: relative; }
-/* Make sure the dropdown can appear in front of content */
-.kl-navbar { position: relative; }
-
+/* DEBUG: force nav visible on mobile */
 @media (max-width: 768px) {
-  .kl-navbar__content.nav-open {
+  .kl-navbar__content {
+    display: block !important;
+    background: #fff;
+  }
+}
+/* === STC: Allow mobile nav dropdown to be visible === */
+@media (max-width: 768px) {
+
+  /* critical: allow dropdown to escape header */
+  .kl-header,
+  .kl-navbar,
+  .kl-navbar.content-wrapper {
+    overflow: visible !important;
+  }
+
+  .kl-navbar {
+    position: relative;
+  }
+
+  /* hide menu by default */
+  .kl-navbar__menu {
+    display: none;
+  }
+
+  /* show menu when nav is open */
+  .kl-navbar.nav-open .kl-navbar__menu {
+    display: block;
     position: absolute;
+    top: 100%;
     left: 0;
     right: 0;
-    top: 100%;
-    background: #fff;
-    z-index: 9999;
+    background: #ffffff;
+    z-index: 10000;
+    padding: 16px 0;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .kl-navbar__item {
+    display: block;
+  }
+
+  .kl-navbar__button {
+    display: block;
+    padding: 14px 20px;
+  }
+}
+/* === STC: Mobile full-screen navigation === */
+@media (max-width: 768px) {
+
+  .kl-navbar__menu {
+    display: none;
+  }
+
+  .kl-navbar.nav-open .kl-navbar__menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    background: #ffffff;
+    z-index: 10000;
+    padding-top: 80px;
+  }
+
+  .kl-navbar__item {
+    text-align: center;
+  }
+
+  .kl-navbar__button {
+    display: block;
+    padding: 20px;
+    font-size: 1.25rem;
+  }
+
+  /* prevent background scroll when menu open */
+  body.nav-open {
+    overflow: hidden;
+  }
+}
+/* === STC: Simple mobile navigation (no hamburger) === */
+@media (max-width: 768px) {
+
+  /* hide the hamburger button */
+  .kl-navbar__mobile {
+    display: none !important;
+  }
+
+  /* always show the menu */
+  .kl-navbar__menu {
+    display: flex !important;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .kl-navbar__item {
+    display: block;
+    text-align: center;
+  }
+
+  .kl-navbar__button {
+    display: block;
+    padding: 16px;
+    font-size: 1.1rem;
+  }
+}
+/* === STC Header (simple, reliable) === */
+.stc-header {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.stc-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stc-logo img {
+  max-width: 140px;
+  height: auto;
+  margin-bottom: 12px;
+}
+
+.stc-nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
+
+.stc-nav a {
+  padding: 10px 0;
+  font-weight: 600;
+  color: #273c77;
+  text-decoration: none;
+}
+
+/* Desktop layout */
+@media (min-width: 769px) {
+  .stc-header-inner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .stc-logo img {
+    margin-bottom: 0;
+  }
+
+  .stc-nav {
+    flex-direction: row;
+    width: auto;
+    text-align: left;
+  }
+
+  .stc-nav a {
+    padding: 0 14px;
   }
 }
