@@ -709,7 +709,7 @@ button, .button, .button_cta a {
   color: rgba(255, 255, 255, 1);
   padding: 15px 25px;
   font-family: IBM Plex Sans, sans-serif;
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: bold;
   display: inline-block;
   width: auto;
@@ -732,6 +732,10 @@ button:hover, button:focus, button:active, .button:hover, .button:focus, .button
   color: rgba(255, 255, 255, 1);
   text-decoration: none;
   transform: scale(1.05);
+}
+button:focus, .button:focus, .button_cta a:focus {
+  outline: 3px solid rgba(65, 99, 177, 0.6);
+  outline-offset: 3px;
 }
 button:disabled, .button:disabled, .button_cta a:disabled {
   background-color: #D0D0D0;
