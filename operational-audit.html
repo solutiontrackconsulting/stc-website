@@ -14,6 +14,7 @@
   <meta name="description" content="Eliminate technical debt and stabilize your Cisco UC environment with a forensic operational audit. 25 years of expert engineering.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <style>
     .audit-feature { background: #f9f9f9; padding: 25px; border-radius: 8px; height: 100%; border-top: 4px solid #273c77; }
     .audit-feature h3 { color: #273c77; margin-top: 0; }
@@ -42,7 +43,7 @@
         <div class="row-fluid-wrapper dnd-section dnd_area-row-0-padding">
           <div class="row-fluid">
             <div class="span12">
-              <section class="headline_area">
+              <section class="headline_area" data-aos="fade-up">
                 <h1>Stop Firefighting. Start Optimizing.</h1>
                 <p class="lead">Is your Cisco UC environment fragile? We perform forensic operational audits to eliminate technical debt, stabilize configuration drift, and return your infrastructure to a known, supportable state.</p>
                 <div class="button_wrapper">
@@ -55,7 +56,7 @@
 
         <div class="row-fluid-wrapper">
           <div class="span12">
-            <div class="stability-callout">
+            <div class="stability-callout" data-aos="fade-up">
               <p>Complexity is the enemy of uptime. If your team is afraid to make changes for fear of "breaking the cluster," you aren't managing an environment—you're managing a liability.</p>
             </div>
           </div>
@@ -63,19 +64,19 @@
 
         <div class="row-fluid-wrapper dnd-section dnd_area-row-2-padding">
           <div class="row-fluid">
-            <div class="span4">
+            <div class="span4" data-aos="fade-up" data-aos-delay="0">
               <div class="audit-feature">
                 <h3>Technical Debt Cleanup</h3>
                 <p>Forensic identification and removal of stale dial plans, orphaned configurations, and redundant logic that slow down MTTR.</p>
               </div>
             </div>
-            <div class="span4">
+            <div class="span4" data-aos="fade-up" data-aos-delay="100">
               <div class="audit-feature">
                 <h3>Configuration Baseline</h3>
                 <p>We establish a "Golden Configuration" baseline to identify drift and ensure your CUCM, Unity, and Contact Center nodes are in sync.</p>
               </div>
             </div>
-            <div class="span4">
+            <div class="span4" data-aos="fade-up" data-aos-delay="200">
               <div class="audit-feature">
                 <h3>Performance Forensic</h3>
                 <p>Deep-dive analysis of system health, database replication, and resource utilization to prevent outages before they happen.</p>
@@ -84,7 +85,7 @@
           </div>
         </div>
 
-        <div class="row-fluid-wrapper dnd-section dnd_area-row-4-padding" style="text-align:center; padding-top:60px;">
+        <div class="row-fluid-wrapper dnd-section dnd_area-row-4-padding" data-aos="fade-up" style="text-align:center; padding-top:60px;">
           <h2>Restore Integrity to Your Infrastructure.</h2>
           <p>Get a detailed Operational Health Report and a remediation roadmap to stabilize your environment for the long term.</p>
           <div class="button_wrapper">
@@ -105,5 +106,7 @@
       </div>
     </footer>
   </div>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ once: true, duration: 650, offset: 80 });</script>
 </body>
 </html>

@@ -25,6 +25,7 @@
 
   <!-- Local theme CSS -->
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 
   <!-- Fonts (optional) -->
   <style>
@@ -113,7 +114,7 @@
                     <div class="row-fluid-wrapper row-depth-1 row-number-2 dnd-row">
                       <div class="row-fluid">
                         <div class="span12 widget-span widget-type-custom_widget dnd-module">
-                          <div class="kl-rich-text">
+                          <div class="kl-rich-text" data-aos="fade-up">
 
                             <h2>Privacy Policy</h2>
                             <p>Last updated: 2025</p>
@@ -226,5 +227,7 @@
   </div>
 
   <script src="js/main.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ once: true, duration: 650, offset: 80 });</script>
 </body>
 </html>
