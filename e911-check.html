@@ -22,6 +22,11 @@
     .platform-note { font-size: 0.9rem; color: #666; font-style: italic; margin-top: 5px; margin-left: 30px; }
     .error-msg { color: #d93025; font-size: 0.9rem; margin-top: 10px; display: none; }
     h2, h3 { color: #273c77; margin-top: 0; }
+    .email-gate { display: none; text-align: center; padding: 10px 0; }
+    .email-gate p { color: #444; margin-bottom: 24px; line-height: 1.6; }
+    .email-gate input { width: 100%; padding: 12px 14px; border: 1px solid #d0d5dd; border-radius: 4px; font-size: 1rem; margin-bottom: 14px; box-sizing: border-box; }
+    .email-gate input:focus { outline: none; border-color: #273c77; }
+    .email-gate .gate-error { color: #d93025; font-size: 0.9rem; margin-bottom: 10px; display: none; }
   </style>
 </head>
 <body>
@@ -75,6 +80,15 @@
           <button class="button primary" onclick="calculateFinal()">Calculate Score</button>
         </div>
 
+        <div class="email-gate" id="emailGate">
+          <h2>Your Results Are Ready</h2>
+          <p>Enter your name and email to see your E911 Architecture Integrity Score.<br>I'll only use this to follow up if your risk level warrants it.</p>
+          <input type="text" id="gateName" placeholder="Your name" autocomplete="name">
+          <input type="email" id="gateEmail" placeholder="your@email.com" autocomplete="email">
+          <p class="gate-error" id="gateError">Please enter a valid name and email.</p>
+          <button class="button primary" onclick="submitGate()">See My Results</button>
+        </div>
+
         <div class="results" id="results">
           <h2>Architecture Integrity Results</h2>
           <div class="score-box">
@@ -119,30 +133,62 @@
       document.getElementById('progress').style.width = (next / 4 * 100) + '%';
     }
 
+    let quizResults = {};
+
     function calculateFinal() {
       if (!document.querySelector('input[name="q4"]:checked')) {
         document.getElementById('err4').style.display = 'block';
         return;
       }
-      
-      let total = 0;
+
       const platform = document.querySelector('input[name="platform"]:checked').value;
       const q2 = parseInt(document.querySelector('input[name="q2"]:checked').value) || 0;
       const q3 = parseInt(document.querySelector('input[name="q3"]:checked').value) || 0;
       const q4 = parseInt(document.querySelector('input[name="q4"]:checked').value) || 0;
-      
-      total = q2 + q3 + q4 + platformData[platform].risk;
+      const total = q2 + q3 + q4 + platformData[platform].risk;
+
+      quizResults = {
+        total,
+        platform,
+        platformMsg: platformData[platform].msg,
+        advice: total > 75 ? "Critical integrity gaps detected. High life-safety liability." :
+                total > 45 ? "Moderate risk detected. Configuration drift likely." :
+                "Technical foundation appears stable, but governance is needed."
+      };
 
       document.getElementById('step4').classList.remove('active');
       document.querySelector('.progress-bar').style.display = 'none';
-      document.getElementById('results').style.display = 'block';
-      document.getElementById('final-score').innerText = total;
-      document.getElementById('platform-advice').innerText = platformData[platform].msg;
-      
-      let advice = total > 75 ? "Critical integrity gaps detected. High life-safety liability." : 
-                   total > 45 ? "Moderate risk detected. Configuration drift likely." : 
-                   "Technical foundation appears stable, but governance is needed.";
-      document.getElementById('general-advice').innerText = advice;
+      document.getElementById('emailGate').style.display = 'block';
+    }
+
+    function submitGate() {
+      const name = document.getElementById('gateName').value.trim();
+      const email = document.getElementById('gateEmail').value.trim();
+      const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      if (!name || !emailValid) {
+        document.getElementById('gateError').style.display = 'block';
+        return;
+      }
+      document.getElementById('gateError').style.display = 'none';
+
+      const body = new FormData();
+      body.append('name', name);
+      body.append('email', email);
+      body.append('_subject', 'E911 Risk Assessment Lead');
+      body.append('Platform', quizResults.platform);
+      body.append('Risk Score', quizResults.total);
+      body.append('Assessment', quizResults.advice);
+
+      fetch('https://formspree.io/f/xjgadeob', {
+        method: 'POST', body, headers: { 'Accept': 'application/json' }
+      }).finally(function() {
+        document.getElementById('emailGate').style.display = 'none';
+        document.getElementById('results').style.display = 'block';
+        document.getElementById('final-score').innerText = quizResults.total;
+        document.getElementById('platform-advice').innerText = quizResults.platformMsg;
+        document.getElementById('general-advice').innerText = quizResults.advice;
+      });
     }
   </script>
 </body>
