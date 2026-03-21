@@ -79,6 +79,26 @@
       .dnd_area-row-0-padding { padding-top: 0px !important; }
     }
   </style>
+  <style>
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px; }
+    @media (max-width: 767px) { .contact-grid { grid-template-columns: 1fr; gap: 40px; } }
+    .contact-form label { display: block; font-weight: 700; margin-bottom: 5px; font-size: 0.9rem; }
+    .contact-form input, .contact-form textarea, .contact-form select {
+      width: 100%; padding: 12px 14px; border: 1px solid #d0d5dd; border-radius: 4px;
+      font-family: inherit; font-size: 1rem; margin-bottom: 18px; box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
+      outline: none; border-color: #273c77;
+    }
+    .contact-form textarea { height: 130px; resize: vertical; }
+    .contact-form .submit-row { margin-top: 8px; }
+    .contact-info h3 { margin-top: 0; color: #273c77; }
+    .contact-info p { margin-bottom: 20px; line-height: 1.7; }
+    .contact-info .direct-links a { display: block; margin-bottom: 10px; font-weight: 700; color: #0c5394; text-decoration: none; }
+    .contact-info .direct-links a:hover { text-decoration: underline; }
+    .form-success { display: none; background: #eef7ee; border: 1px solid #7bc47f; padding: 20px; border-radius: 6px; color: #2d6a30; font-weight: 700; }
+  </style>
 
   <link rel="canonical" href="https://solutiontrackconsulting.com/contact.html">
   <meta property="og:url" content="https://solutiontrackconsulting.com/contact.html">
@@ -148,24 +168,66 @@
                         <div class="span12 widget-span widget-type-custom_widget dnd-module">
                           <div class="kl-rich-text" data-aos="fade-up">
                             <h2>Contact Solution Track Consulting</h2>
-                            <p>Have a question? Need Cisco UC help? Looking for senior-level support?<br>
-                               Reach out and I’ll get back to you quickly.</p>
-                            <hr>
-                            <h2>Get in Touch</h2>
-                            <p>
-                              <strong>Email:</strong>
-                              <a href="mailto:info@solutiontrackconsulting.com" rel="noopener">
-                                info@solutiontrackconsulting.com
-                              </a><br>
-                              <strong>Phone:</strong> (503) 912-7788
-                            </p>
-                            <p>
-                              Prefer to schedule directly?<br>
-                              <a rel="noopener"
-                                 href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2?ismsaljsauthenabled">
-                                Book a 20-minute call →
-                              </a>
-                            </p>
+                            <p>Have a question? Need Cisco UC help? Looking for senior-level support? Reach out and I’ll get back to you quickly.</p>
+
+                            <div class="contact-grid">
+
+                              <div class="contact-form">
+                                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contactForm">
+                                  <label for="name">Name *</label>
+                                  <input type="text" id="name" name="name" required placeholder="Your name">
+
+                                  <label for="email">Email *</label>
+                                  <input type="email" id="email" name="email" required placeholder="your@email.com">
+
+                                  <label for="company">Company</label>
+                                  <input type="text" id="company" name="company" placeholder="Your company name">
+
+                                  <label for="service">What can I help with?</label>
+                                  <select id="service" name="service">
+                                    <option value="">— Select a topic —</option>
+                                    <option value="E911 Compliance">E911 Compliance</option>
+                                    <option value="Migration Audit">Migration Audit</option>
+                                    <option value="Operational Audit">Operational Audit</option>
+                                    <option value="Partner Capacity">Partner / White-Label Capacity</option>
+                                    <option value="Cisco UC Support">Cisco UC Support</option>
+                                    <option value="Other">Other</option>
+                                  </select>
+
+                                  <label for="message">Message *</label>
+                                  <textarea id="message" name="message" required placeholder="Tell me about your environment or challenge..."></textarea>
+
+                                  <div class="submit-row">
+                                    <button type="submit" class="button primary">Send Message</button>
+                                  </div>
+                                </form>
+                                <div class="form-success" id="formSuccess">
+                                  Thanks — I’ll be in touch within one business day.
+                                </div>
+                              </div>
+
+                              <div class="contact-info">
+                                <h3>Other Ways to Reach Me</h3>
+                                <p>
+                                  <strong>Email:</strong><br>
+                                  <a href="mailto:info@solutiontrackconsulting.com">info@solutiontrackconsulting.com</a>
+                                </p>
+                                <p>
+                                  <strong>Phone:</strong><br>
+                                  (503) 912-7788
+                                </p>
+                                <p>
+                                  <strong>Location:</strong><br>
+                                  Portland Metro, Oregon
+                                </p>
+                                <div class="direct-links">
+                                  <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2?ismsaljsauthenabled">
+                                    📅 Book a 20-minute call →
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -201,5 +263,25 @@
   <script src="js/main.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>AOS.init({ once: true, duration: 650, offset: 80 });</script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var form = this;
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(response) {
+        if (response.ok) {
+          form.style.display = 'none';
+          document.getElementById('formSuccess').style.display = 'block';
+        } else {
+          alert('Something went wrong. Please email us directly at info@solutiontrackconsulting.com');
+        }
+      }).catch(function() {
+        alert('Something went wrong. Please email us directly at info@solutiontrackconsulting.com');
+      });
+    });
+  </script>
 </body>
 </html>
