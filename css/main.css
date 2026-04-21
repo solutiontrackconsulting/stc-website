@@ -5602,3 +5602,23 @@ sub {
     padding: 0 14px;
   }
 }
+
+/* ─── PAGE TRANSITIONS ─── */
+@keyframes pageRiseIn {
+  from { opacity: 0; transform: translateY(35px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pageFallOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(50px); }
+}
+
+body {
+  animation: pageRiseIn 0.45s ease both;
+}
+
+body.is-exiting {
+  animation: pageFallOut 0.35s ease both;
+  pointer-events: none;
+}
