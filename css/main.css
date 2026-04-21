@@ -5605,20 +5605,38 @@ sub {
 
 /* ─── PAGE TRANSITIONS ─── */
 @keyframes pageRiseIn {
-  from { opacity: 0; transform: translateY(35px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: perspective(1200px) translateY(110px) rotateX(12deg) scale(0.95);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1200px) translateY(0) rotateX(0deg) scale(1);
+    filter: blur(0);
+  }
 }
 
 @keyframes pageFallOut {
-  from { opacity: 1; transform: translateY(0); }
-  to   { opacity: 0; transform: translateY(50px); }
+  from {
+    opacity: 1;
+    transform: perspective(1200px) translateY(0) rotateX(0deg) scale(1);
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    transform: perspective(1200px) translateY(160px) rotateX(-18deg) scale(0.92);
+    filter: blur(10px);
+  }
 }
 
 body {
-  animation: pageRiseIn 0.45s ease both;
+  animation: pageRiseIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: center top;
 }
 
 body.is-exiting {
-  animation: pageFallOut 0.35s ease both;
+  animation: pageFallOut 0.45s cubic-bezier(0.55, 0, 1, 0.45) both;
   pointer-events: none;
+  transform-origin: center bottom;
 }
