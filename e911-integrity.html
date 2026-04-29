@@ -1,149 +1,510 @@
-<!doctype html>
+<!-- STC Prototype v1 — e911-integrity.html -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0S3B57YQPV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0S3B57YQPV');
-</script>
-  <meta charset="utf-8">
-  <title>E911 Strategic Integrity & Compliance | Solution Track Consulting</title>
-  <meta name="description" content="Remediating complex E911 compliance gaps for Healthcare, Utilities, and Enterprise. Kari’s Law and RAY BAUM’S Act expertise nationwide.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="E911 Strategic Integrity Audit | Solution Track Consulting">
-  <meta property="og:description" content="Remediating complex E911 compliance gaps for Healthcare, Utilities, and Enterprise. Kari’s Law and RAY BAUM’S Act expertise nationwide.">
-  <meta property="og:image" content="https://solutiontrackconsulting.com/img/stc-social-card.jpg">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="E911 Strategic Integrity Audit | Solution Track Consulting">
-  <meta name="twitter:image" content="https://solutiontrackconsulting.com/img/stc-social-card.jpg">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E911 Strategic Integrity Audit | Solution Track Consulting</title>
+  <meta name="description" content="E911 compliance audit for enterprise UC environments. Kari's Law and RAY BAUM's Act remediation. Healthcare, education, and manufacturing specialization." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    .surgical-phase { background: #f9f9f9; padding: 25px; border-left: 4px solid #273c77; margin-bottom: 20px; height: 100%; }
-    .surgical-phase h3 { margin-top: 0; color: #273c77; font-size: 1.25rem; }
-    .integrity-gap { background: #fff4f4; border: 1px solid #e0b0b0; padding: 30px; border-radius: 8px; margin: 40px 0; }
-    .industry-tag { display: inline-block; background: #273c77; color: #fff; padding: 5px 15px; border-radius: 20px; margin: 5px; font-size: 0.9rem; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0a1f44; --navy-mid: #112958; --navy-light: #1e3a6e;
+      --blue: #1a6bcc; --blue-hover: #145db3;
+      --orange: #e86a2e; --orange-hover: #d05a20;
+      --bg-alt: #f0f4fa; --bg-white: #ffffff;
+      --text-dark: #0d1b2e; --text-mid: #3a4a60; --text-light: #6b7a96;
+      --border: #d8e2f0; --radius: 6px; --radius-lg: 12px;
+      --shadow-sm: 0 2px 8px rgba(10,31,68,.08);
+      --shadow-md: 0 6px 24px rgba(10,31,68,.13);
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --max-w: 1140px; --section-pad: 96px 24px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); font-size: 16px; line-height: 1.65; color: var(--text-dark); background: var(--bg-white); -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+    h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; }
+    .section-title { font-size: clamp(1.65rem, 3vw, 2.2rem); color: var(--navy); margin-bottom: 16px; }
+    .section-subtitle { font-size: 1.05rem; color: var(--text-mid); max-width: 640px; }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-header .section-subtitle { margin: 0 auto; }
+    .section-divider { height: 3px; background: linear-gradient(90deg, transparent, var(--blue) 30%, var(--orange) 70%, transparent); opacity: .2; }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 30px; border-radius: 4px; font-family: var(--font); font-size: .95rem; font-weight: 600; cursor: pointer; border: 2px solid transparent; transition: background .2s, color .2s, border-color .2s, box-shadow .2s, transform .15s; white-space: nowrap; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary { background: var(--blue); color: #fff; border-color: var(--blue); box-shadow: 0 3px 12px rgba(26,107,204,.30); }
+    .btn-primary:hover { background: var(--orange); border-color: var(--orange); box-shadow: 0 6px 20px rgba(232,106,46,.40); }
+    .btn-ghost { background: rgba(255,255,255,.12); color: #fff; border-color: rgba(255,255,255,.4); }
+    .btn-ghost:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.7); }
+    .btn-sm { padding: 10px 20px; font-size: .87rem; }
+
+    /* Dots */
+    .dots-accent { position: absolute; width: 160px; height: 160px; background-image: radial-gradient(circle, var(--blue) 1.5px, transparent 1.5px); background-size: 18px 18px; opacity: .13; pointer-events: none; }
+
+    /* NAV */
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10,31,68,.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.07); height: 68px; display: flex; align-items: center; transition: box-shadow .3s; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .nav-logo img { height: 40px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { padding: 8px 14px; border-radius: 6px; font-size: .9rem; font-weight: 500; color: rgba(255,255,255,.82); transition: color .2s, background .2s; }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,.08); }
+    .nav-links a.active { color: #fff; background: rgba(255,255,255,.1); position: relative; }
+    .nav-links a.active::after { content: ''; position: absolute; bottom: -1px; left: 14px; right: 14px; height: 2px; background: var(--orange); border-radius: 2px; }
+    .nav-cta { margin-left: 8px; }
+    .nav-cta .btn { padding: 9px 20px; font-size: .87rem; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: transform .25s, opacity .25s; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile { display: none; flex-direction: column; background: rgba(10,31,68,.99); position: fixed; top: 68px; left: 0; right: 0; z-index: 999; padding: 16px 24px 28px; border-bottom: 1px solid rgba(255,255,255,.08); box-shadow: 0 12px 32px rgba(0,0,0,.4); }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { padding: 14px 0; color: rgba(255,255,255,.82); font-size: 1rem; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,.07); transition: color .15s; }
+    .nav-mobile a:last-of-type { border-bottom: none; }
+    .nav-mobile a:hover, .nav-mobile a.active { color: #fff; }
+    .nav-mobile .btn { margin-top: 16px; justify-content: center; width: 100%; }
+
+    /* Breadcrumb */
+    .breadcrumb-bar { background: var(--navy); border-bottom: 1px solid rgba(255,255,255,.07); padding: 12px 0; margin-top: 68px; }
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: .82rem; color: rgba(255,255,255,.45); max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .breadcrumb a { color: rgba(255,255,255,.55); transition: color .15s; }
+    .breadcrumb a:hover { color: rgba(255,255,255,.9); }
+    .breadcrumb-sep { font-size: .7rem; opacity: .4; }
+    .breadcrumb-current { color: rgba(255,255,255,.8); font-weight: 500; }
+
+    /* Page hero */
+    .page-hero { background: linear-gradient(135deg, #0a1f44 0%, #112958 60%, #0d2d5a 100%); padding: 72px 24px 64px; position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(26,107,204,.15) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 20% 60%, rgba(232,106,46,.06) 0%, transparent 60%); pointer-events: none; }
+    .page-hero-dots { position: absolute; width: 160px; height: 160px; background-image: radial-gradient(circle, rgba(255,255,255,.15) 1.5px, transparent 1.5px); background-size: 18px 18px; pointer-events: none; }
+    .page-hero-dots-1 { top: 20px; right: 80px; }
+    .page-hero-dots-2 { bottom: 20px; left: 60px; }
+    .page-hero-inner { position: relative; z-index: 1; max-width: var(--max-w); margin: 0 auto; max-width: 800px; }
+    .page-hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(26,107,204,.2); border: 1px solid rgba(26,107,204,.35); border-radius: 40px; padding: 5px 16px 5px 10px; font-size: .8rem; font-weight: 600; color: rgba(255,255,255,.85); margin-bottom: 22px; }
+    .page-hero-dot { width: 7px; height: 7px; background: var(--orange); border-radius: 50%; flex-shrink: 0; }
+    .page-hero h1 { font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 800; color: #fff; margin-bottom: 16px; line-height: 1.15; }
+    .page-hero-sub { font-size: 1.08rem; color: rgba(255,255,255,.72); line-height: 1.72; max-width: 660px; margin-bottom: 32px; }
+    .page-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* ── Integrity Gap section ── */
+    .gap-section { background: var(--bg-white); padding: var(--section-pad); position: relative; overflow: hidden; }
+    .gap-intro { max-width: var(--max-w); margin: 0 auto 48px; }
+    .gap-intro h2 { font-size: clamp(1.5rem, 2.8vw, 2rem); color: var(--navy); margin-bottom: 14px; }
+    .gap-intro p { font-size: 1rem; color: var(--text-mid); line-height: 1.72; max-width: 660px; }
+
+    .integrity-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: var(--max-w); margin: 0 auto 36px; }
+    .integrity-col { background: var(--bg-alt); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 32px 24px; text-align: center; transition: box-shadow .2s, transform .2s; }
+    .integrity-col:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .integrity-col-emoji { font-size: 2.4rem; display: block; margin-bottom: 14px; line-height: 1; }
+    .integrity-col h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .integrity-col p { font-size: .88rem; color: var(--text-mid); font-style: italic; }
+
+    .callout-box { max-width: var(--max-w); margin: 0 auto; background: var(--bg-alt); border: 2px solid var(--navy); border-radius: var(--radius-lg); padding: 28px 36px; }
+    .callout-box p { font-size: 1rem; color: var(--navy); font-weight: 600; line-height: 1.65; }
+
+    /* ── Phase cards ── */
+    .phases-section { background: var(--bg-alt); padding: var(--section-pad); position: relative; overflow: hidden; }
+    .phase-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: var(--max-w); margin: 0 auto 52px; }
+    .phase-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 24px; display: flex; flex-direction: row; align-items: flex-start; gap: 20px; transition: box-shadow .25s, border-color .2s; }
+    .phase-card:hover { box-shadow: var(--shadow-md); border-color: rgba(26,107,204,.25); }
+    .phase-number { flex-shrink: 0; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; line-height: 1; background: var(--bg-alt); color: var(--navy); }
+    .phase-card:nth-child(2) .phase-number { color: var(--blue); background: rgba(26,107,204,.1); }
+    .phase-card:nth-child(3) .phase-number { color: var(--orange); background: rgba(232,106,46,.1); }
+    .phase-body h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .phase-body .phase-tag { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--blue); background: rgba(26,107,204,.08); border-radius: 4px; padding: 3px 8px; display: inline-block; margin-bottom: 10px; }
+    .phase-body p { font-size: .88rem; color: var(--text-mid); line-height: 1.65; }
+    .phases-cta { text-align: center; }
+
+    /* ── Sector cards ── */
+    .sector-section { background: var(--bg-white); padding: var(--section-pad); position: relative; overflow: hidden; }
+    .sector-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: var(--max-w); margin: 0 auto; }
+    .sector-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 26px; transition: box-shadow .25s, transform .2s, border-color .2s; position: relative; overflow: hidden; }
+    .sector-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--blue); }
+    .sector-card:nth-child(2)::before { background: var(--orange); }
+    .sector-card:nth-child(3)::before { background: var(--navy); }
+    .sector-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .sector-emoji { font-size: 2.2rem; display: block; margin-bottom: 14px; line-height: 1; }
+    .sector-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .sector-card p { font-size: .9rem; color: var(--text-mid); line-height: 1.65; }
+
+    /* CTA Band */
+    .cta-band { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #0d2d5a 100%); padding: 88px 24px; text-align: center; position: relative; overflow: hidden; }
+    .cta-band::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(26,107,204,.12) 0%, transparent 70%); }
+    .cta-band-dots { position: absolute; width: 160px; height: 160px; background-image: radial-gradient(circle, rgba(255,255,255,.18) 1.5px, transparent 1.5px); background-size: 18px 18px; pointer-events: none; }
+    .cta-band-dots-1 { top: 24px; right: 100px; }
+    .cta-band-dots-2 { bottom: 24px; left: 80px; }
+    .cta-band h2 { color: #fff; font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 14px; position: relative; }
+    .cta-band p { color: rgba(255,255,255,.72); font-size: 1.05rem; margin-bottom: 36px; max-width: 540px; margin-left: auto; margin-right: auto; position: relative; line-height: 1.7; }
+    .cta-band .btn { font-size: 1rem; padding: 16px 40px; position: relative; }
+
+    /* Footer */
+    .site-footer { background: #060f20; padding: 64px 24px 32px; color: rgba(255,255,255,.55); }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .footer-brand img { height: 36px; width: auto; filter: brightness(0) invert(1); opacity: .85; margin-bottom: 16px; }
+    .footer-brand p { font-size: .88rem; line-height: 1.65; margin-bottom: 20px; }
+    .footer-badge img { width: 80px; height: auto; }
+    .footer-col h4 { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { font-size: .88rem; color: rgba(255,255,255,.5); transition: color .15s; }
+    .footer-col ul li a:hover { color: rgba(255,255,255,.9); }
+    .footer-contact p { display: flex; align-items: center; gap: 10px; font-size: .88rem; margin-bottom: 10px; }
+    .footer-contact svg { width: 15px; height: 15px; flex-shrink: 0; color: rgba(255,255,255,.3); }
+    .footer-contact a { transition: color .15s; }
+    .footer-contact a:hover { color: rgba(255,255,255,.9); }
+    .footer-bottom { padding-top: 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: .8rem; }
+    .footer-bottom-links { display: flex; gap: 24px; }
+    .footer-bottom-links a { font-size: .8rem; color: rgba(255,255,255,.3); transition: color .15s; }
+    .footer-bottom-links a:hover { color: rgba(255,255,255,.7); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .integrity-cols { grid-template-columns: 1fr; }
+      .phase-cards    { grid-template-columns: 1fr; }
+      .sector-cards   { grid-template-columns: 1fr; }
+      .footer-top     { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 680px) {
+      :root { --section-pad: 72px 20px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
+      .page-hero  { padding: 48px 20px 52px; }
+      .page-hero h1 { font-size: 1.8rem; }
+      .page-hero-actions { flex-direction: column; }
+      .page-hero-actions .btn { width: 100%; justify-content: center; }
+      .callout-box { padding: 22px 20px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ─── Page Transition ───────────────────────────────────────────────── */
+    body { animation: pageFadeIn 0.4s ease forwards; }
+    @keyframes pageFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    body.fade-out {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    /* ─── Scroll Reveal ─────────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .icon {
+      display: inline-block;
+      vertical-align: middle;
+      width: 24px;
+      height: 24px;
+      stroke: #1a6bcc;
+      stroke-width: 1.5;
+      fill: none;
+      flex-shrink: 0;
+    }
+    .icon-white { stroke: #ffffff; }
+    .icon-orange { stroke: #e86a2e; }
+    /* Cisco Badge */
+    .cisco-badge-link { display: inline-block; transition: opacity 0.2s ease; }
+    .cisco-badge-link:hover { opacity: 0.85; }
   </style>
 </head>
 <body>
-  <div class="body-wrapper page">
-    <header class="stc-header">
-      <div class="stc-header-inner">
-        <a href="index.html" class="stc-logo">
-          <img src="img/STC-logo-blue2-1.png" alt="Solution Track Consulting">
-        </a>
-        <nav class="stc-nav">
-          <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
-    </header>
 
-    <main class="body-container-wrapper">
-      <div class="container-fluid body-container">
-
-        <nav aria-label="Breadcrumb" style="padding: 18px 0 0; font-size: 0.9rem; color: #666;">
-          <a href="index.html" style="color:#0c5394; text-decoration:none;">Home</a>
-          &rsaquo;
-          <a href="services.html" style="color:#0c5394; text-decoration:none;">Services</a>
-          &rsaquo;
-          <span>E911 Integrity Audit</span>
-        </nav>
-
-        <div class="row-fluid-wrapper dnd-section dnd_area-row-0-padding">
-          <div class="row-fluid">
-            <div class="span12">
-              <section class="headline_area" data-aos="fade-up">
-                <h1>Bridge the Gap Between Your Unified Communications and Life-Safety Compliance.</h1>
-                <p class="lead">We specialize in the high-stakes remediation of E911 infrastructure, ensuring your technical foundation meets the rigorous standards of Kari’s Law and RAY BAUM’S Act.</p>
-                <div class="button_wrapper">
-                  <a class="button primary" href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2">Schedule Your 15-Minute Strategic Integrity Review</a>
-                </div>
-              </section>
-            </div>
-          </div>
-        </div>
-
-        <div class="row-fluid-wrapper">
-          <div class="span12">
-            <div class="integrity-gap" data-aos="fade-up">
-              <h2>The "Integrity Gap"</h2>
-              <p>Most enterprises own the necessary tools but lack the cross-functional alignment to make them effective. If your network discovery, physical facility mapping, and voice configuration aren't in sync, you are carrying unmitigated risk.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row-fluid-wrapper dnd-section" style="text-align:center; padding: 40px 0;">
-          <p class="text-muted"><em>[Diagram: The E911 Cross-Functional Governance Model – Mapping the intersection of Voice Engineering, Network Discovery, and Physical Facilities]</em></p>
-          
-        </div>
-
-        <div class="row-fluid-wrapper dnd-section dnd_area-row-2-padding">
-          <div class="row-fluid">
-            <div class="span12">
-              <h2 style="text-align:center; margin-bottom:40px;">Our Surgical Approach</h2>
-            </div>
-          </div>
-          <div class="row-fluid">
-            <div class="span4" data-aos="fade-up" data-aos-delay="0">
-              <div class="surgical-phase">
-                <h3>Phase 1: Integrity Assessment</h3>
-                <p><strong>Complimentary 15-Min Review.</strong> A collaborative session to discuss the requirements of Kari's Law, Ray Baum's Act and identify immediate liability gaps in your current configuration. This may lead to another discover call as necessary.</p>
-              </div>
-            </div>
-            <div class="span4" data-aos="fade-up" data-aos-delay="100">
-              <div class="surgical-phase">
-                <h3>Phase 2: Targeted Remediation</h3>
-                <p><strong>Onsite Validation.</strong> A focused, 2–5 day onsite engagement to validate physical floor plans against system data. We align your "halls and floors" with your digital infrastructure. We will work with IT, Facilities, Saftey, Security, and Legal to make sure the silo walls are not effecting compliance.</p>
-              </div>
-            </div>
-            <div class="span4" data-aos="fade-up" data-aos-delay="200">
-              <div class="surgical-phase">
-                <h3>Phase 3: Managed Governance</h3>
-                <p><strong>Ongoing Assurance.</strong> Specialized governance services to protect your environment from technical debt and configuration drift, ensuring long-term compliance integrity.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row-fluid-wrapper dnd-section dnd_area-row-4-padding" data-aos="fade-up" style="background:#f4f4f4; border-radius: 8px; padding: 60px 20px;">
-          <div class="row-fluid">
-            <div class="span12" style="text-align:center;">
-              <h2>Critical Sector Specialization</h2>
-              <p style="margin-bottom:20px;">Providing sophisticated E911 architecture for organizations where life-safety is the highest priority.</p>
-              <span class="industry-tag">Healthcare</span>
-              <span class="industry-tag">Education</span>
-              <span class="industry-tag">Manufacturing</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </main>
-
-    <footer class="kl-footer">
-      <div class="kl-footer__wrapper content-wrapper" style="text-align:center; padding: 60px 0;">
-        <p style="font-size: 1.1rem; margin-bottom:10px;"><strong>Veteran-Owned | 25 Years of Enterprise UC Architecture | Specialized in Complex Multi-Vendor Migrations</strong></p>
-        <p>Solution Track Consulting LLC • 503-912-7788 • info@solutiontrackconsulting.com</p>
-        <p style="font-size: 0.9rem; margin-bottom: 8px;">
-          <a href="migration-audit.html" style="color:#fff;">Migration Audit</a> &nbsp;&bull;&nbsp;
-          <a href="operational-audit.html" style="color:#fff;">Operational Audit</a> &nbsp;&bull;&nbsp;
-          <a href="partner-support.html" style="color:#fff;">Partner Support</a>
-        </p>
-        <div style="margin-top: 20px;">
-          <a href="https://www.cisco.com/c/en/us/partners.html" target="_blank" rel="noopener"><img src="img/cisco-partner-badge.svg" alt="Cisco 360 Partner" style="height: 80px; width: auto;"></a>
-        </div>
-      </div>
-    </footer>
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Solution Track Consulting home">
+      <img src="https://www.solutiontrackconsulting.com/img/STC-logo-blue2-1.png" alt="Solution Track Consulting" />
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
+         class="btn btn-primary" target="_blank" rel="noopener">Talk to Stephen</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init({ once: true, duration: 650, offset: 80 });</script>
-  <script src="js/transitions.js"></script>
+</nav>
+
+<div class="nav-mobile" id="navMobile" role="dialog" aria-label="Mobile menu">
+  <a href="index.html">Home</a>
+  <a href="services.html" class="active">Services</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
+     class="btn btn-primary" target="_blank" rel="noopener">Talk to Stephen</a>
+</div>
+
+<div class="breadcrumb-bar">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="services.html">Services</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">E911 Integrity Audit</span>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="page-hero" id="top">
+  <div class="page-hero-dots page-hero-dots-1"></div>
+  <div class="page-hero-dots page-hero-dots-2"></div>
+  <div class="page-hero-inner">
+    <div class="page-hero-eyebrow">
+      <span class="page-hero-dot"></span>
+      Kari's Law &amp; RAY BAUM's Act Compliance
+    </div>
+    <h1>E911 Compliance Is a Configuration Problem. We Fix It.</h1>
+    <p class="page-hero-sub">
+      Most enterprises have the tools. What they are missing is the alignment between network discovery, physical facilities, and voice configuration. We find the gaps and fix them.
+    </p>
+    <div class="page-hero-actions">
+      <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
+         class="btn btn-primary" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+        Schedule Your 15-Min Strategic Review
+      </a>
+      <a href="services.html" class="btn btn-ghost">View All Services</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- THE INTEGRITY GAP -->
+<section class="gap-section" id="the-problem">
+  <div class="dots-accent" style="bottom:40px;right:60px;"></div>
+  <div class="container">
+    <div class="gap-intro">
+      <span class="eyebrow">The Problem</span>
+      <h2>Most Enterprises Own the Tools. The Configuration Does Not Match Reality.</h2>
+      <p>
+        If your network discovery, physical facility mapping, and voice configuration are not in sync, you are carrying unmitigated risk. It is present in the majority of enterprise UC environments we have assessed.
+      </p>
+    </div>
+
+    <div class="integrity-cols">
+      <div class="integrity-col reveal">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" /></svg>
+        <h3>Network Discovery</h3>
+        <p>"What's actually on your network?"</p>
+      </div>
+      <div class="integrity-col reveal" style="transition-delay:.1s">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" /></svg>
+        <h3>Physical Facilities</h3>
+        <p>"Do your floors and rooms match your data?"</p>
+      </div>
+      <div class="integrity-col reveal" style="transition-delay:.2s">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" /></svg>
+        <h3>Voice Configuration</h3>
+        <p>"Does your CUCM E911 logic reflect reality?"</p>
+      </div>
+    </div>
+
+    <div class="callout-box">
+      <p>When these three systems are not aligned, a 911 call from the wrong device delivers the wrong location to a dispatcher. That is a life-safety failure and a legal liability.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SURGICAL APPROACH -->
+<section class="phases-section" id="process">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">The Process</span>
+      <h2 class="section-title">Three Phases. Measurable Outcomes.</h2>
+    </div>
+
+    <div class="phase-cards">
+      <div class="phase-card reveal">
+        <div class="phase-number">1</div>
+        <div class="phase-body">
+          <span class="phase-tag">Integrity Assessment</span>
+          <h3>Complimentary 15-Min Review</h3>
+          <p>A collaborative session to map the requirements of Kari's Law and RAY BAUM's Act against your current configuration and identify immediate liability gaps. May lead to a discovery call as needed.</p>
+        </div>
+      </div>
+      <div class="phase-card reveal" style="transition-delay:.1s">
+        <div class="phase-number">2</div>
+        <div class="phase-body">
+          <span class="phase-tag">Onsite Validation</span>
+          <h3>2–5 Day Onsite Engagement</h3>
+          <p>A focused engagement to validate physical floor plans against system data. We align your "halls and floors" with your digital infrastructure. We work across IT, Facilities, Safety, Security, and Legal to break down silos that create compliance risk.</p>
+        </div>
+      </div>
+      <div class="phase-card reveal" style="transition-delay:.2s">
+        <div class="phase-number">3</div>
+        <div class="phase-body">
+          <span class="phase-tag">Managed Governance</span>
+          <h3>Ongoing Assurance</h3>
+          <p>Ongoing assurance services to protect your environment from technical debt and configuration drift. We ensure long-term compliance integrity between audits.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phases-cta">
+      <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
+         class="btn btn-primary" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+        Start With a Free 15-Min Review
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SECTOR SPECIALIZATION -->
+<section class="sector-section" id="sectors">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Who We Serve</span>
+      <h2 class="section-title">Where Life Safety Is the Highest Priority.</h2>
+      <p class="section-subtitle">E911 compliance is not a checkbox exercise. In these sectors the stakes are measured in outcomes, not tickets closed.</p>
+    </div>
+
+    <div class="sector-cards">
+      <div class="sector-card reveal">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" /></svg>
+        <h3>Healthcare</h3>
+        <p>Hospitals, health systems, and multi-site medical groups where 911 accuracy across patient floors and wings is a regulatory and moral imperative.</p>
+      </div>
+      <div class="sector-card reveal" style="transition-delay:.1s">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 3.741-1.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" /></svg>
+        <h3>Education</h3>
+        <p>K-12 and higher education campuses where Alyssa's Law and Kari's Law compliance intersects with complex building and device sprawl.</p>
+      </div>
+      <div class="sector-card reveal" style="transition-delay:.2s">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016 2.993 2.993 0 0 0 2.25-1.016 3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" /></svg>
+        <h3>Manufacturing</h3>
+        <p>Large-footprint industrial environments where floor mapping and device location accuracy can mean the difference between a fast and delayed emergency response.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="cta">
+  <div class="cta-band-dots cta-band-dots-1"></div>
+  <div class="cta-band-dots cta-band-dots-2"></div>
+  <h2>Is Your E911 Configuration Actually Compliant?</h2>
+  <p style="max-width: 480px; margin: 0 auto;">Most organizations do not know until they look. We can tell you in 15 minutes whether it is worth a deeper conversation.</p>
+  <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
+     class="btn btn-primary" target="_blank" rel="noopener">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+    Schedule Your Free Review
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="https://www.solutiontrackconsulting.com/img/STC-logo-blue2-1.png" alt="Solution Track Consulting" />
+        <p>Senior-level Cisco UC, Contact Center, and Network Infrastructure engineering for Enterprise IT teams and Service Providers.</p>
+        <div class="footer-badge">
+          <a href="https://www.cisco.com/c/en/us/partners.html" class="cisco-badge-link" target="_blank" rel="noopener">
+            <img src="assets/Cisco_360Partners_Logo_Partner_fc.png" alt="Cisco 360 Partner" />
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="e911-integrity.html">E911 Integrity Audit</a></li>
+          <li><a href="migration-audit.html">Forensic Migration Audit</a></li>
+          <li><a href="operational-audit.html">Operational Integrity Audit</a></li>
+          <li><a href="partner-support.html">Partner Capacity</a></li>
+          <li><a href="services.html">Systems &amp; Networking</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>Contact</h4>
+        <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Portland Metro, Oregon</p>
+        <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.41 2 2 0 0 1 3.56 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.46a16 16 0 0 0 5.55 5.55l.92-.92a2 2 0 0 1 2.12-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:5039127788">503-912-7788</a></p>
+        <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><a href="mailto:info@solutiontrackconsulting.com">info@solutiontrackconsulting.com</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="footerYear"></span> Solution Track Consulting. All rights reserved. &nbsp;&middot;&nbsp; Veteran-Owned Business</p>
+      <div class="footer-bottom-links">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="services.html">Services</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+  const nav = document.querySelector('.site-nav');
+  window.addEventListener('scroll', () => { nav.style.boxShadow = window.scrollY > 20 ? '0 4px 24px rgba(0,0,0,.4)' : 'none'; }, { passive: true });
+  const toggle = document.getElementById('navToggle'), mobileNav = document.getElementById('navMobile');
+  function openNav() { mobileNav.classList.add('open'); toggle.classList.add('open'); toggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeNav() { mobileNav.classList.remove('open'); toggle.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  toggle.addEventListener('click', e => { e.stopPropagation(); mobileNav.classList.contains('open') ? closeNav() : openNav(); });
+  mobileNav.querySelectorAll('a').forEach(l => l.addEventListener('click', closeNav));
+  document.addEventListener('click', e => { if (!nav.contains(e.target) && !mobileNav.contains(e.target)) closeNav(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+  // Page fade transition
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && !href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel') && !href.startsWith('#')) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.body.classList.add('fade-out');
+        setTimeout(() => { window.location.href = href; }, 250);
+      });
+    }
+  });
+
+  // Scroll reveal
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealElements.forEach(el => revealObserver.observe(el));
+</script>
 </body>
 </html>
