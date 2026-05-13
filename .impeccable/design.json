@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-12T00:00:00Z",
+  "title": "Design System: Solution Track Consulting",
+  "extensions": {
+    "colorMeta": {
+      "mission-blue": {
+        "role": "primary",
+        "displayName": "Mission Blue",
+        "canonical": "#273C77",
+        "tonalRamp": ["#0d1429", "#172040", "#1f2d58", "#273c77", "#3a56a0", "#6080c0", "#95aad8", "#d0daf0"]
+      },
+      "mission-blue-lifted": {
+        "role": "primary-state",
+        "displayName": "Mission Blue Lifted",
+        "canonical": "#4163B1",
+        "tonalRamp": ["#162040", "#243360", "#324888", "#4163b1", "#6585c8", "#92a9db", "#bfcaec", "#e8ecf7"]
+      },
+      "signal-orange": {
+        "role": "secondary",
+        "displayName": "Signal Orange",
+        "canonical": "#EF6B51",
+        "tonalRamp": ["#4a1a0f", "#7a2d18", "#b04325", "#ef6b51", "#f58c75", "#f8ab9d", "#fac8c0", "#fde9e5"]
+      },
+      "link-deep": {
+        "role": "link",
+        "displayName": "Link Deep",
+        "canonical": "#0C5394",
+        "tonalRamp": ["#041a30", "#082d50", "#0a4070", "#0c5394", "#1a70be", "#5299d6", "#91bfe8", "#d0e5f6"]
+      },
+      "surface-white": {
+        "role": "neutral-bg",
+        "displayName": "Surface White",
+        "canonical": "#FFFFFF",
+        "tonalRamp": ["#cccccc", "#d9d9d9", "#e5e5e5", "#f0f0f0", "#f5f5f5", "#f8f8f8", "#fcfcfc", "#ffffff"]
+      },
+      "surface-muted": {
+        "role": "neutral-surface",
+        "displayName": "Surface Muted",
+        "canonical": "#F4F4F4",
+        "tonalRamp": ["#c0c0c0", "#cccccc", "#d8d8d8", "#e4e4e4", "#ededed", "#f0f0f0", "#f4f4f4", "#f9f9f9"]
+      },
+      "border-subtle": {
+        "role": "neutral-border",
+        "displayName": "Border Subtle",
+        "canonical": "#D0D5DD",
+        "tonalRamp": ["#8a9099", "#a4abb5", "#b8bfc9", "#d0d5dd", "#dde1e8", "#e8ebef", "#f1f3f6", "#f8f9fa"]
+      },
+      "text-body": {
+        "role": "neutral-text",
+        "displayName": "Text Body",
+        "canonical": "#33475B",
+        "tonalRamp": ["#111c26", "#1e2e40", "#283c52", "#33475b", "#4e6580", "#7a91a8", "#adbdcc", "#dce5ed"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero h1 headlines only. Tight leading for authority." },
+      "headline": { "displayName": "Headline", "purpose": "Page titles and major section openers." },
+      "title": { "displayName": "Title", "purpose": "H2 section headings: Strategic Audits, Partner Capacity." },
+      "body": { "displayName": "Body", "purpose": "All paragraph text. Inter. Max 65-75ch per line." },
+      "label": { "displayName": "Label", "purpose": "Form labels, button text, footer fine print. Never uppercase." }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "page-rise-in",
+        "value": "pageRiseIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both",
+        "purpose": "Desktop page entry. translateY(110px) + rotateX(12deg) + scale(0.95) + blur(6px) to resting state."
+      },
+      {
+        "name": "page-fall-out",
+        "value": "pageFallOut 0.45s cubic-bezier(0.55, 0, 1, 0.45) both",
+        "purpose": "Desktop page exit. Rotate downward, scale to 0.92, blur to 10px, fade out."
+      },
+      {
+        "name": "aos-standard",
+        "value": "fade-up 650ms ease-out, offset 80px, once: true",
+        "purpose": "AOS scroll-triggered content entrance. Applied to section content blocks."
+      }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "767px", "purpose": "Switches nav to stacked column; simplifies page transitions." },
+      { "name": "desktop", "value": "769px", "purpose": "Header becomes row layout; 3D transitions active." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main CTA. Used for Discuss Your Project, Send Message, and all primary actions.",
+      "html": "<button class=\"ds-btn-primary\">Discuss Your Project</button>",
+      "css": ".ds-btn-primary { display: inline-block; background: #273C77; color: #ffffff; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.01em; padding: 12px 24px; border: none; border-radius: 3px; cursor: pointer; text-decoration: none; transition: background-color 0.2s ease; } .ds-btn-primary:hover { background: #4163B1; } .ds-btn-primary:focus-visible { outline: 2px solid #273C77; outline-offset: 3px; }"
+    },
+    {
+      "name": "Outlined Button",
+      "kind": "button",
+      "refersTo": "button-outlined",
+      "description": "Secondary action. Transparent fill with Mission Blue border and text.",
+      "html": "<button class=\"ds-btn-outlined\">View All Services</button>",
+      "css": ".ds-btn-outlined { display: inline-block; background: transparent; color: #273C77; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.01em; padding: 12px 24px; border: 1px solid #273C77; border-radius: 3px; cursor: pointer; text-decoration: none; transition: background-color 0.2s ease, color 0.2s ease; } .ds-btn-outlined:hover { background: #273C77; color: #ffffff; } .ds-btn-outlined:focus-visible { outline: 2px solid #273C77; outline-offset: 3px; }"
+    },
+    {
+      "name": "Arrow Link",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Inline navigational link with arrow suffix. No box. Used for section-level navigation within content.",
+      "html": "<a class=\"ds-arrow-link\" href=\"#\">E911 Strategic Integrity Audit <span aria-hidden=\"true\">→</span></a>",
+      "css": ".ds-arrow-link { color: #0C5394; font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 700; text-decoration: none; display: inline-block; } .ds-arrow-link:hover { text-decoration: underline; } .ds-arrow-link span { margin-left: 2px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-default",
+      "description": "Standard form field. Used for name, email, company, and message fields.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-field-label\" for=\"ds-input-demo\">Email *</label><input class=\"ds-input\" type=\"email\" id=\"ds-input-demo\" placeholder=\"your@email.com\"></div>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 5px; } .ds-field-label { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem; font-weight: 700; color: #000000; } .ds-input { width: 100%; padding: 12px 14px; border: 1px solid #D0D5DD; border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 1rem; color: #000000; background: #ffffff; box-sizing: border-box; transition: border-color 0.2s ease; } .ds-input:focus { outline: none; border-color: #273C77; } .ds-input::placeholder { color: #aab0bb; }"
+    },
+    {
+      "name": "Navigation Header",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Site header with logo left and nav links right at 1100px max-width. Collapses to stacked layout on mobile.",
+      "html": "<header class=\"ds-header\"><div class=\"ds-header-inner\"><a class=\"ds-logo\" href=\"#\">STC</a><nav class=\"ds-nav\"><a href=\"#\">Home</a><a href=\"#\">Services</a><a href=\"#\">About</a><a href=\"#\">Contact</a></nav></div></header>",
+      "css": ".ds-header { background: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.08); } .ds-header-inner { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; } .ds-logo { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 1.1rem; color: #273C77; text-decoration: none; } .ds-nav { display: flex; gap: 0; } .ds-nav a { padding: 0 14px; font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 600; color: #273C77; text-decoration: none; } .ds-nav a:hover { color: #4163B1; }"
+    },
+    {
+      "name": "Content Card",
+      "kind": "card",
+      "refersTo": null,
+      "description": "Inset content container. Used for sidebar stats boxes and grouped information areas.",
+      "html": "<div class=\"ds-card\"><h4 class=\"ds-card-title\">Core Specialties</h4><ul class=\"ds-card-list\"><li>Cisco UCCE/UCCX</li><li>CUCM &amp; Unity</li><li>E911 Compliance</li></ul></div>",
+      "css": ".ds-card { background: #F4F4F4; border-radius: 8px; padding: 25px; } .ds-card-title { font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 700; color: #000000; margin: 0 0 12px 0; } .ds-card-list { margin: 0; padding-left: 18px; font-family: 'Inter', sans-serif; font-size: 1rem; color: #33475B; line-height: 1.7; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Engineering Brief",
+    "overview": "This is a consultant's deliverable, not a marketing artifact. Every page is structured like a well-prepared technical brief: a clear statement of the problem, the relevant credentials, the specific services, and a direct path to action. Nothing is decorative. Nothing restates what a heading already said. The aesthetic reflects the methodology.\n\nIBM Plex Sans carries the structural authority -- a humanist, monospaced-origin sans that signals precision without coldness. Inter handles body prose, readable across long paragraphs. Together they form a working pair: headings that belong in a spec document, body text that reads like a well-written memo.\n\nColor strategy is Restrained: Mission Blue dominates interactive and structural elements; Signal Orange appears sparingly for urgency or error states; white-to-muted-gray surface contrast provides the only atmospheric shift. No gradients. No hero photography. No illustrative decoration.",
+    "keyCharacteristics": [
+      "Flat surfaces with tonal depth from white/muted contrast only",
+      "Very shallow border radius: buttons 3px, inputs 4px, cards 8px",
+      "3D perspective page transitions on desktop; simplified to opacity/translateY on mobile",
+      "Scroll-triggered fade-up entrance via AOS (650ms, 80px offset)",
+      "WCAG 2.1 AA contrast throughout",
+      "Zero box shadows; zero gradient fills; zero glassmorphism"
+    ],
+    "rules": [
+      {
+        "name": "The Mission Blue Ceiling Rule",
+        "body": "Mission Blue is structural, not atmospheric. It belongs on interactive elements and headings. It is never used as a full-page background, a gradient start, or a decorative fill. The moment it becomes scenery, it loses authority.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Orange Rule",
+        "body": "Signal Orange is a tactical alert, not a brand color. It never appears in the header, navigation, or as a background fill. Its rarity is what makes it land.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Decoration Rule",
+        "body": "No underlines on navigation links at rest. No italics for emphasis in body copy. Emphasis is weight-only (bold) or hierarchy (heading level). Decoration signals decoration; weight signals importance.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-And-Earned Rule",
+        "body": "If you are reaching for box-shadow, stop. Use a background tint instead. If a surface needs to feel elevated, give it a border or a tonal background-color, not a halo. Shadows are not part of this visual vocabulary.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use Mission Blue (#273C77) on all primary buttons, navigation links, and section headings.",
+      "Do keep body text at Inter 1rem / 1.7 line-height, hard-capped at 65-75ch per line.",
+      "Do use IBM Plex Sans 700 for display, headline, title, label, and button text.",
+      "Do use Surface Muted (#F4F4F4) rather than shadows to create inset or grouped content areas.",
+      "Do shift input borders to Mission Blue on focus and Signal Orange on error.",
+      "Do use AOS fade-up (650ms, 80px offset, once: true) for scroll-triggered content entrance.",
+      "Do suppress all animations under prefers-reduced-motion: reduce.",
+      "Do name services like forensic disciplines: E911 Strategic Integrity Audit, not E911 Services.",
+      "Do write body copy in Inter; reserve IBM Plex Sans for structural/heading roles."
+    ],
+    "donts": [
+      "Don't use generic IT vendor aesthetics: no stock photos of server rooms, no full-bleed blue gradient heroes, no buzzword feature grids.",
+      "Don't use SaaS startup patterns: no pastel gradients, no identical rounded card grids, no social proof banners, no hero metric displays.",
+      "Don't use Big-4 consulting firm formality: no dense article-index layouts, no impersonal institutional language.",
+      "Don't make the site feel like a freelancer portfolio: casual personal-site warmth is the wrong register.",
+      "Don't use border-left greater than 1px as a colored accent stripe on any card, callout, or list item.",
+      "Don't use gradient text (background-clip: text + gradient). Emphasis uses weight or heading level only.",
+      "Don't add box-shadow to any surface. Use a tonal background instead.",
+      "Don't use Signal Orange (#EF6B51) in the header, navigation, or as a background fill on non-error surfaces.",
+      "Don't use cards as the default layout container. If content doesn't need grouping, don't group it.",
+      "Don't write vague copy. Every claim must be specific and testable. If it could describe any IT firm, cut it."
+    ]
+  }
+}
