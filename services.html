@@ -1,197 +1,96 @@
-<!-- STC Prototype v1 — services.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cisco UC Services & Strategic Audits | Solution Track Consulting</title>
+  <title>Cisco UC Services &amp; Strategic Audits | Solution Track Consulting</title>
   <meta name="description" content="UC environment assessments, E911 compliance audits, CUCM migration support, and white-label engineering for IT service providers.">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
-    /* ─── Reset & Base ─────────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ─── Tokens ──────────────────────────────────────────────────────────── */
     :root {
-      --navy:        #0a1f44;
-      --navy-mid:    #112958;
-      --navy-light:  #1e3a6e;
-      --blue:        #1a6bcc;
-      --blue-hover:  #145db3;
-      --orange:      #e86a2e;
-      --orange-hover:#d05a20;
-      --bg-alt:      #f0f4fa;
-      --bg-white:    #ffffff;
-      --text-dark:   #0d1b2e;
-      --text-mid:    #3a4a60;
-      --text-light:  #6b7a96;
-      --border:      #d8e2f0;
-      --radius:      6px;
-      --radius-lg:   12px;
-      --shadow-sm:   0 2px 8px rgba(10,31,68,.08);
-      --shadow-md:   0 6px 24px rgba(10,31,68,.13);
-      --shadow-lg:   0 16px 48px rgba(10,31,68,.18);
-      --font:        'Inter', system-ui, -apple-system, sans-serif;
-      --max-w:       1140px;
-      --section-pad: 96px 24px;
+      --blue:           #273C77;
+      --blue-lift:      #4163B1;
+      --orange:         #EF6B51;
+      --link:           #0C5394;
+      --surface:        #FAFBFE;
+      --surface-muted:  #F2F4F8;
+      --border:         #D0D5DD;
+      --text:           #111520;
+      --text-body:      #33475B;
+      --text-mid:       #6B7A8D;
+      --font-head:      'IBM Plex Sans', system-ui, sans-serif;
+      --font-body:      'Inter', system-ui, sans-serif;
+      --max-w:          1100px;
     }
 
+    /* ─── Reset ───────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: var(--font);
-      font-size: 16px;
-      line-height: 1.65;
-      color: var(--text-dark);
-      background: var(--bg-white);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--surface);
       -webkit-font-smoothing: antialiased;
     }
-
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ─── Typography helpers ────────────────────────────────────────────── */
-    .eyebrow {
-      display: inline-block;
-      font-size: 11px;
+    h1, h2, h3, h4 {
+      font-family: var(--font-head);
       font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 14px;
+      line-height: 1.2;
+      text-wrap: balance;
+    }
+    :focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+      border-radius: 2px;
     }
 
-    h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; }
-
-    .section-title {
-      font-size: clamp(1.65rem, 3vw, 2.2rem);
-      color: var(--navy);
-      margin-bottom: 16px;
-    }
-    .section-subtitle {
-      font-size: 1.05rem;
-      color: var(--text-mid);
-      max-width: 640px;
-    }
-    .section-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-    .section-header .section-subtitle { margin: 0 auto; }
-
-    /* ─── Buttons ───────────────────────────────────────────────────────── */
+    /* ─── Buttons ─────────────────────────────────────────────────────────── */
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 14px 30px;
-      border-radius: 4px;
-      font-family: var(--font);
-      font-size: .95rem;
-      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 3px;
+      font-family: var(--font-head);
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
       cursor: pointer;
-      border: 2px solid transparent;
-      transition: background .2s, color .2s, border-color .2s, box-shadow .2s, transform .15s;
+      border: 1px solid transparent;
+      transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
       white-space: nowrap;
+      text-decoration: none;
     }
-    .btn:hover { transform: translateY(-2px); }
-    .btn:active { transform: translateY(0); }
-
     .btn-primary {
       background: var(--blue);
-      color: #fff;
-      border-color: var(--blue);
-      box-shadow: 0 3px 12px rgba(26,107,204,.30);
-    }
-    .btn-primary:hover {
-      background: var(--orange);
-      border-color: var(--orange);
-      box-shadow: 0 6px 20px rgba(232,106,46,.40);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--blue);
+      color: #F8FBFF;
       border-color: var(--blue);
     }
-    .btn-outline:hover {
-      background: var(--blue);
-      color: #fff;
-    }
+    .btn-primary:hover { background: var(--blue-lift); border-color: var(--blue-lift); }
+    .btn-sm { padding: 9px 18px; font-size: 0.8125rem; }
 
-    .btn-ghost {
-      background: rgba(255,255,255,.12);
-      color: #fff;
-      border-color: rgba(255,255,255,.4);
-    }
-    .btn-ghost:hover {
-      background: rgba(255,255,255,.22);
-      border-color: rgba(255,255,255,.7);
-    }
-
-    .btn-sm {
-      padding: 10px 20px;
-      font-size: .87rem;
-    }
-
-    /* ─── Dot accent decoration ─────────────────────────────────────────── */
-    .dots-accent {
-      position: absolute;
-      width: 160px;
-      height: 160px;
-      background-image: radial-gradient(circle, var(--blue) 1.5px, transparent 1.5px);
-      background-size: 18px 18px;
-      opacity: .13;
-      pointer-events: none;
-    }
-
-    /* ─── Arrow link ────────────────────────────────────────────────────── */
-    .arrow-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: .88rem;
-      font-weight: 600;
-      color: var(--blue);
-      transition: gap .15s, color .15s;
-    }
-    .arrow-link:hover { gap: 10px; color: var(--blue-hover); }
-    .arrow-link svg { width: 14px; height: 14px; flex-shrink: 0; }
-
-    /* ─── Section divider ───────────────────────────────────────────────── */
-    .section-divider {
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--blue) 30%, var(--orange) 70%, transparent);
-      opacity: .2;
-    }
-
-    /* ════════════════════════════════════════════════════════════════════
-       NAV — identical to index.html
-    ════════════════════════════════════════════════════════════════════ */
+    /* ─── NAV ─────────────────────────────────────────────────────────────── */
     .site-nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 1000;
-      background: rgba(10,31,68,.97);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,.07);
-      height: 68px;
+      height: 64px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
-      transition: box-shadow .3s;
     }
     .nav-inner {
       display: flex;
@@ -202,40 +101,19 @@
       margin: 0 auto;
       padding: 0 24px;
     }
-    .nav-logo img { height: 40px; width: auto; }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      list-style: none;
-    }
+    .nav-logo img { height: 36px; width: auto; }
+    .nav-links { display: flex; align-items: center; list-style: none; }
     .nav-links a {
       padding: 8px 14px;
-      border-radius: 6px;
-      font-size: .9rem;
-      font-weight: 500;
-      color: rgba(255,255,255,.82);
-      transition: color .2s, background .2s;
+      font-family: var(--font-head);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--blue);
+      transition: color 0.15s;
     }
-    .nav-links a:hover { color: #fff; background: rgba(255,255,255,.08); }
-    .nav-links a.active {
-      color: #fff;
-      background: rgba(255,255,255,.1);
-      position: relative;
-    }
-    .nav-links a.active::after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      left: 14px; right: 14px;
-      height: 2px;
-      background: var(--orange);
-      border-radius: 2px;
-    }
-
-    .nav-cta { margin-left: 8px; }
-    .nav-cta .btn { padding: 9px 20px; font-size: .87rem; }
+    .nav-links a:hover { color: var(--blue-lift); }
+    .nav-links a.active { text-decoration: underline; text-underline-offset: 4px; }
+    .nav-cta { margin-left: 16px; }
 
     .nav-toggle {
       display: none;
@@ -248,10 +126,9 @@
     }
     .nav-toggle span {
       display: block;
-      width: 24px; height: 2px;
-      background: #fff;
-      border-radius: 2px;
-      transition: transform .25s, opacity .25s;
+      width: 22px; height: 2px;
+      background: var(--blue);
+      transition: transform 0.22s ease-out, opacity 0.18s;
     }
     .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-toggle.open span:nth-child(2) { opacity: 0; }
@@ -260,700 +137,378 @@
     .nav-mobile {
       display: none;
       flex-direction: column;
-      background: rgba(10,31,68,.99);
       position: fixed;
-      top: 68px; left: 0; right: 0;
+      top: 64px; left: 0; right: 0;
       z-index: 999;
-      padding: 16px 24px 28px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      box-shadow: 0 12px 32px rgba(0,0,0,.4);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px 24px;
     }
     .nav-mobile.open { display: flex; }
     .nav-mobile a {
       padding: 14px 0;
-      color: rgba(255,255,255,.82);
+      font-family: var(--font-head);
       font-size: 1rem;
-      font-weight: 500;
-      border-bottom: 1px solid rgba(255,255,255,.07);
-      transition: color .15s;
+      font-weight: 600;
+      color: var(--blue);
+      border-bottom: 1px solid var(--border);
     }
-    .nav-mobile a:last-of-type { border-bottom: none; }
-    .nav-mobile a:hover { color: #fff; }
-    .nav-mobile a.active { color: #fff; }
-    .nav-mobile .btn {
-      margin-top: 16px;
-      justify-content: center;
-      width: 100%;
-    }
+    .nav-mobile a:last-of-type:not(.btn) { border-bottom: none; }
+    .nav-mobile .btn { margin-top: 16px; justify-content: center; }
 
-    /* ════════════════════════════════════════════════════════════════════
-       BREADCRUMB
-    ════════════════════════════════════════════════════════════════════ */
-    .breadcrumb-bar {
-      background: var(--navy);
-      border-bottom: 1px solid rgba(255,255,255,.07);
-      padding: 12px 0;
-      margin-top: 68px;
+    /* ─── BREADCRUMB ──────────────────────────────────────────────────────── */
+    .page-breadcrumb {
+      margin-top: 64px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
     }
-    .breadcrumb {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: .82rem;
-      color: rgba(255,255,255,.45);
+    .breadcrumb-inner {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 0 24px;
-    }
-    .breadcrumb a {
-      color: rgba(255,255,255,.55);
-      transition: color .15s;
-    }
-    .breadcrumb a:hover { color: rgba(255,255,255,.9); }
-    .breadcrumb-sep { font-size: .7rem; opacity: .4; }
-    .breadcrumb-current { color: rgba(255,255,255,.8); font-weight: 500; }
-
-    /* ════════════════════════════════════════════════════════════════════
-       PAGE HERO — shorter inner-page variant
-    ════════════════════════════════════════════════════════════════════ */
-    .page-hero {
-      background: var(--navy);
-      background: linear-gradient(135deg, #0a1f44 0%, #112958 60%, #0d2d5a 100%);
-      padding: 72px 24px 64px;
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-    }
-    .page-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 80% at 70% 50%, rgba(26,107,204,.15) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 20% 60%, rgba(232,106,46,.06) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .page-hero-dots {
-      position: absolute;
-      width: 160px; height: 160px;
-      background-image: radial-gradient(circle, rgba(255,255,255,.15) 1.5px, transparent 1.5px);
-      background-size: 18px 18px;
-      pointer-events: none;
-    }
-    .page-hero-dots-1 { top: 20px; right: 80px; }
-    .page-hero-dots-2 { bottom: 20px; left: 60px; }
-
-    .page-hero-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .page-hero-eyebrow {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(26,107,204,.2);
-      border: 1px solid rgba(26,107,204,.35);
-      border-radius: 40px;
-      padding: 5px 16px 5px 10px;
-      font-size: .8rem;
-      font-weight: 600;
-      color: rgba(255,255,255,.85);
-      margin-bottom: 22px;
+      gap: 6px;
+      font-size: 0.8125rem;
+      color: var(--text-mid);
     }
-    .page-hero-dot {
-      width: 7px; height: 7px;
-      background: var(--orange);
-      border-radius: 50%;
-      flex-shrink: 0;
+    .breadcrumb-inner a { color: var(--link); transition: color 0.15s; }
+    .breadcrumb-inner a:hover { color: var(--blue); }
+
+    /* ─── PAGE HEADER ─────────────────────────────────────────────────────── */
+    .page-header {
+      background: var(--surface);
+      padding: 80px 24px 72px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header-inner { max-width: var(--max-w); margin: 0 auto; }
+    .page-header h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+    .page-header-sub {
+      font-size: 1.125rem;
+      color: var(--text-body);
+      line-height: 1.7;
+      max-width: 52ch;
     }
 
-    .page-hero h1 {
-      font-size: clamp(2rem, 4vw, 2.9rem);
-      font-weight: 800;
-      color: #fff;
+    /* ─── AUDITS SECTION ──────────────────────────────────────────────────── */
+    .audits-section {
+      background: var(--surface-muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .audits-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 96px 24px;
+    }
+    .audits-header { margin-bottom: 56px; }
+    .section-label {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    .audits-header h2 {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      color: var(--text);
       margin-bottom: 14px;
     }
-    .page-hero-sub {
-      font-size: 1.12rem;
-      color: rgba(255,255,255,.7);
+    .audits-header p {
+      font-size: 1rem;
+      color: var(--text-body);
+      max-width: 58ch;
       line-height: 1.7;
-      max-width: 600px;
-      margin: 0 auto 36px;
     }
-
-    /* Trust bar inside hero */
-    .page-hero-trust {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      padding-top: 28px;
-      border-top: 1px solid rgba(255,255,255,.1);
-    }
-    .page-hero-trust .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      padding: 6px 18px;
-      font-size: .8rem;
-      font-weight: 600;
-      color: rgba(255,255,255,.62);
-    }
-    .page-hero-trust .trust-item-icon { color: var(--orange); display: flex; align-items: center; }
-    .page-hero-trust .trust-sep {
-      width: 1px; height: 22px;
-      background: rgba(255,255,255,.12);
-      flex-shrink: 0;
-    }
-
-    /* ════════════════════════════════════════════════════════════════════
-       SECTION 2 — AUDIENCE SPLIT
-    ════════════════════════════════════════════════════════════════════ */
-    .audience-section {
-      background: var(--bg-white);
-      padding: var(--section-pad);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .audience-grid {
+    .audits-list { border-top: 1px solid var(--border); }
+    .audit-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      max-width: var(--max-w);
-      margin: 0 auto;
+      gap: 48px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
     }
-
-    .audience-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 40px 36px 36px;
-      position: relative;
-      overflow: hidden;
-      transition: box-shadow .25s, transform .2s;
-      background: var(--bg-white);
+    .audit-row h3 {
+      font-size: 1.125rem;
+      color: var(--text);
+      margin-bottom: 10px;
     }
-    .audience-card:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-3px);
-    }
-    .audience-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-    }
-    .audience-card:first-child::before { background: var(--blue); }
-    .audience-card:last-child::before  { background: var(--orange); }
-
-    .audience-emoji {
-      font-size: 2.4rem;
-      display: block;
+    .audit-row-desc {
+      font-size: 0.9375rem;
+      color: var(--text-body);
+      line-height: 1.65;
       margin-bottom: 16px;
-      line-height: 1;
+      max-width: 52ch;
     }
-    .audience-card h3 {
-      font-size: 1.2rem;
-      color: var(--navy);
-      margin-bottom: 12px;
-    }
-    .audience-card p {
-      font-size: .96rem;
+    .audit-meta {
+      font-size: 0.8125rem;
       color: var(--text-mid);
-      line-height: 1.72;
-      margin-bottom: 22px;
+      margin-bottom: 0;
     }
-
-    /* ════════════════════════════════════════════════════════════════════
-       SECTION 3 — STRATEGIC AUDITS
-    ════════════════════════════════════════════════════════════════════ */
-    .audits-section {
-      background: var(--bg-alt);
-      padding: var(--section-pad);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .audits-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: var(--max-w);
-      margin: 0 auto;
-    }
-
-    .audit-card {
-      background: var(--bg-white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 32px 28px 28px;
+    .audit-row-action {
       display: flex;
       flex-direction: column;
-      transition: box-shadow .25s, transform .2s, border-color .2s;
-      box-shadow: var(--shadow-sm);
+      gap: 14px;
+      padding-top: 4px;
     }
-    .audit-card:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-4px);
-      border-color: rgba(26,107,204,.2);
-    }
-
-    .audit-emoji {
-      font-size: 2rem;
-      display: block;
-      margin-bottom: 14px;
-      line-height: 1;
-    }
-    .audit-card h3 {
-      font-size: 1.05rem;
+    .audit-detail-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-head);
+      font-size: 0.875rem;
       font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 12px;
-      line-height: 1.3;
+      color: var(--link);
+      transition: gap 0.15s, color 0.15s;
     }
-    .audit-card p {
-      font-size: .88rem;
-      color: var(--text-mid);
-      line-height: 1.68;
-      margin-bottom: 20px;
-      flex: 1;
-    }
-
+    .audit-detail-link:hover { gap: 10px; color: var(--blue); }
+    .audit-detail-link svg { width: 13px; height: 13px; flex-shrink: 0; }
     .audit-phases {
       display: flex;
       align-items: center;
       gap: 6px;
       flex-wrap: wrap;
-      margin-bottom: 20px;
     }
     .audit-phase {
-      font-size: .72rem;
+      font-family: var(--font-head);
+      font-size: 0.6875rem;
       font-weight: 700;
-      letter-spacing: .05em;
-      text-transform: uppercase;
+      letter-spacing: 0.06em;
       color: var(--blue);
-      background: rgba(26,107,204,.08);
-      border-radius: 4px;
-      padding: 4px 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 2px;
+      padding: 3px 8px;
     }
-    .audit-phase-arrow {
-      font-size: .65rem;
-      color: var(--text-light);
-    }
-
-    .audit-sectors {
-      font-size: .78rem;
-      color: var(--text-light);
-      margin-bottom: 20px;
-    }
-    .audit-sectors strong {
+    .audit-phase-sep {
+      font-size: 0.7rem;
       color: var(--text-mid);
-      font-weight: 600;
     }
 
-    .audit-card-footer {
-      border-top: 1px solid var(--border);
-      padding-top: 18px;
-      margin-top: auto;
-    }
-
-    /* ════════════════════════════════════════════════════════════════════
-       SECTION 4 — PARTNER CAPACITY
-    ════════════════════════════════════════════════════════════════════ */
+    /* ─── PARTNER SECTION ────────────────────────────────────────────────── */
     .partner-section {
-      background: var(--bg-white);
-      padding: var(--section-pad);
-      position: relative;
-      overflow: hidden;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
     }
-    .partner-section .dots-accent { bottom: 40px; right: 60px; }
-
     .partner-inner {
       max-width: var(--max-w);
       margin: 0 auto;
+      padding: 96px 24px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 380px;
       gap: 80px;
       align-items: start;
     }
-
-    .partner-lead h2 {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      color: var(--navy);
+    .partner-kicker {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.08em;
       margin-bottom: 16px;
-      line-height: 1.2;
     }
-    .partner-lead p {
+    .partner-lead h2 {
+      font-size: clamp(1.375rem, 2.25vw, 1.875rem);
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+    .partner-lead > p {
       font-size: 1rem;
-      color: var(--text-mid);
-      line-height: 1.72;
+      color: var(--text-body);
+      line-height: 1.75;
       margin-bottom: 36px;
+      max-width: 56ch;
     }
-
     .feature-rows {
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      border-top: 1px solid var(--border);
       margin-bottom: 36px;
     }
     .feature-row {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
     }
-    .feature-row-emoji {
-      font-size: 1.6rem;
-      line-height: 1;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-    .feature-row-body {}
-    .feature-row-body strong {
-      display: block;
-      font-size: .97rem;
+    .feature-row h4 {
+      font-size: 0.9375rem;
       font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 3px;
-    }
-    .feature-row-body p {
-      font-size: .88rem;
-      color: var(--text-mid);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .checklist-box {
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 28px 28px 24px;
-    }
-    .checklist-box h4 {
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      margin-bottom: 18px;
-    }
-    .checklist-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px 16px;
-    }
-    .checklist-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: .87rem;
-      color: var(--text-mid);
-      line-height: 1.45;
-    }
-    .checklist-check {
-      color: var(--blue);
-      font-weight: 800;
-      font-size: .95rem;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    /* ════════════════════════════════════════════════════════════════════
-       SECTION 5 — ENTERPRISE IT
-    ════════════════════════════════════════════════════════════════════ */
-    .enterprise-section {
-      background: var(--bg-alt);
-      padding: var(--section-pad);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .enterprise-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: start;
-    }
-
-    .enterprise-content h2 {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      color: var(--navy);
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-    .enterprise-content > p {
-      font-size: 1rem;
-      color: var(--text-mid);
-      line-height: 1.72;
-      margin-bottom: 32px;
-    }
-
-    .requests-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 40px;
-    }
-    .request-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: .92rem;
-      color: var(--text-mid);
-      line-height: 1.5;
-    }
-    .request-arrow {
-      color: var(--blue);
-      font-weight: 700;
-      flex-shrink: 0;
-      font-size: .85rem;
-      margin-top: 2px;
-    }
-
-    .engagement-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .engagement-cards h4 {
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--text-light);
+      color: var(--text);
       margin-bottom: 4px;
     }
-    .engagement-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .feature-row p {
+      font-size: 0.875rem;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    /* Mission Blue checklist panel */
+    .checklist-panel {
+      background: var(--blue);
+      padding: 36px 32px;
+    }
+    .checklist-panel-head {
+      font-family: var(--font-head);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: #6A8CC0;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #3A5494;
+    }
+    .checklist-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
       gap: 12px;
     }
-    .engagement-card {
-      background: var(--bg-white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px 16px;
-      transition: box-shadow .2s, border-color .2s;
+    .checklist-list li {
+      font-size: 0.9rem;
+      color: #C0D8F0;
+      line-height: 1.45;
+      padding-left: 16px;
+      position: relative;
     }
-    .engagement-card:hover {
-      box-shadow: var(--shadow-sm);
-      border-color: rgba(26,107,204,.25);
-    }
-    .engagement-card strong {
-      display: block;
-      font-size: .88rem;
+    .checklist-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+      font-size: 0.75rem;
       font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 5px;
-    }
-    .engagement-card p {
-      font-size: .8rem;
-      color: var(--text-light);
-      line-height: 1.5;
-      margin: 0;
+      top: 0.1em;
     }
 
-    /* ════════════════════════════════════════════════════════════════════
-       CTA BAND
-    ════════════════════════════════════════════════════════════════════ */
+    /* ─── ENGAGEMENT STRIP ────────────────────────────────────────────────── */
+    .engagement-section {
+      background: var(--surface-muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .engagement-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .engagement-inner h2 {
+      font-size: clamp(1.25rem, 2vw, 1.5rem);
+      color: var(--text);
+      margin-bottom: 48px;
+    }
+    .engagement-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+    }
+    .engagement-col {
+      padding: 32px 40px 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .engagement-col:not(:last-child) { border-right: 1px solid var(--border); padding-right: 40px; }
+    .engagement-col:not(:first-child) { padding-left: 40px; }
+    .engagement-col h3 {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .engagement-col p {
+      font-size: 0.9rem;
+      color: var(--text-body);
+      line-height: 1.65;
+    }
+
+    /* ─── CTA BAND ────────────────────────────────────────────────────────── */
     .cta-band {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #0d2d5a 100%);
-      padding: 88px 24px;
+      background: var(--blue);
+      padding: 96px 24px;
       text-align: center;
-      position: relative;
-      overflow: hidden;
     }
-    .cta-band::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(26,107,204,.12) 0%, transparent 70%);
-    }
-    .cta-band-dots {
-      position: absolute;
-      width: 160px; height: 160px;
-      background-image: radial-gradient(circle, rgba(255,255,255,.18) 1.5px, transparent 1.5px);
-      background-size: 18px 18px;
-      pointer-events: none;
-    }
-    .cta-band-dots-1 { top: 24px; right: 100px; }
-    .cta-band-dots-2 { bottom: 24px; left: 80px; }
-
     .cta-band h2 {
-      color: #fff;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      margin-bottom: 14px;
-      position: relative;
-    }
-    .cta-band p {
-      color: rgba(255,255,255,.72);
-      font-size: 1.05rem;
-      margin-bottom: 36px;
-      max-width: 540px;
+      font-size: clamp(1.375rem, 2.5vw, 1.875rem);
+      color: #EEF2FF;
+      margin-bottom: 16px;
+      max-width: 50ch;
       margin-left: auto;
       margin-right: auto;
-      position: relative;
-      line-height: 1.7;
     }
-    .cta-band .btn {
+    .cta-band p {
       font-size: 1rem;
-      padding: 16px 40px;
-      position: relative;
+      color: #8AAAD4;
+      line-height: 1.7;
+      max-width: 44ch;
+      margin: 0 auto 40px;
     }
+    .cta-band .btn-primary {
+      background: #F8FBFF;
+      color: var(--blue);
+      border-color: #F8FBFF;
+    }
+    .cta-band .btn-primary:hover { background: #E8EFF8; border-color: #E8EFF8; }
 
-    /* ════════════════════════════════════════════════════════════════════
-       FOOTER — identical to index.html
-    ════════════════════════════════════════════════════════════════════ */
-    .site-footer {
-      background: #060f20;
-      padding: 64px 24px 32px;
-      color: rgba(255,255,255,.55);
-    }
+    /* ─── FOOTER ──────────────────────────────────────────────────────────── */
+    .site-footer { background: #0E1525; padding: 64px 24px 32px; color: #5A6A80; }
     .footer-inner { max-width: var(--max-w); margin: 0 auto; }
-
     .footer-top {
       display: grid;
       grid-template-columns: 1.4fr 1fr 1fr 1fr;
       gap: 48px;
       padding-bottom: 48px;
-      border-bottom: 1px solid rgba(255,255,255,.07);
+      border-bottom: 1px solid #1E2A40;
     }
-    .footer-brand img {
-      height: 36px; width: auto;
-      filter: brightness(0) invert(1);
-      opacity: .85;
-      margin-bottom: 16px;
-    }
-    .footer-brand p {
-      font-size: .88rem;
-      line-height: 1.65;
-      margin-bottom: 20px;
-    }
-    .footer-badge img {
-      width: 80px;
-      height: auto;
-    }
-    .footer-col h4 {
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.3);
-      margin-bottom: 16px;
-    }
+    .footer-brand img { height: 32px; width: auto; filter: brightness(0) invert(1); opacity: 0.80; margin-bottom: 16px; }
+    .footer-brand p { font-size: 0.875rem; line-height: 1.65; margin-bottom: 20px; max-width: 38ch; }
+    .footer-badge img { width: 72px; height: auto; opacity: 0.65; }
+    .footer-col h4 { font-family: var(--font-head); font-size: 0.6875rem; font-weight: 700; color: #2E3D52; letter-spacing: 0.1em; margin-bottom: 16px; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col ul li a {
-      font-size: .88rem;
-      color: rgba(255,255,255,.5);
-      transition: color .15s;
-    }
-    .footer-col ul li a:hover { color: rgba(255,255,255,.9); }
-    .footer-contact p {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: .88rem;
-      margin-bottom: 10px;
-    }
-    .footer-contact svg { width: 15px; height: 15px; flex-shrink: 0; color: rgba(255,255,255,.3); }
-    .footer-contact a { transition: color .15s; }
-    .footer-contact a:hover { color: rgba(255,255,255,.9); }
-
-    .footer-bottom {
-      padding-top: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .footer-bottom p { font-size: .8rem; }
+    .footer-col ul li a { font-size: 0.875rem; color: #4A5D74; transition: color 0.15s; }
+    .footer-col ul li a:hover { color: #9AAEC0; }
+    .footer-contact p { display: flex; align-items: center; gap: 10px; font-size: 0.875rem; margin-bottom: 10px; }
+    .footer-contact svg { width: 14px; height: 14px; flex-shrink: 0; color: #2E3D52; }
+    .footer-contact a { color: #4A5D74; transition: color 0.15s; }
+    .footer-contact a:hover { color: #9AAEC0; }
+    .footer-bottom { padding-top: 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 0.8rem; }
     .footer-bottom-links { display: flex; gap: 24px; }
-    .footer-bottom-links a {
-      font-size: .8rem;
-      color: rgba(255,255,255,.3);
-      transition: color .15s;
-    }
-    .footer-bottom-links a:hover { color: rgba(255,255,255,.7); }
+    .footer-bottom-links a { font-size: 0.8rem; color: #2E3D52; transition: color 0.15s; }
+    .footer-bottom-links a:hover { color: #6A7E94; }
 
-    /* ════════════════════════════════════════════════════════════════════
-       RESPONSIVE
-    ════════════════════════════════════════════════════════════════════ */
-    @media (max-width: 900px) {
-      .audience-grid        { grid-template-columns: 1fr; }
-      .audits-grid          { grid-template-columns: 1fr; }
-      .partner-inner        { grid-template-columns: 1fr; gap: 48px; }
-      .enterprise-inner     { grid-template-columns: 1fr; gap: 48px; }
-      .footer-top           { grid-template-columns: 1fr 1fr; }
+    /* ─── Motion ──────────────────────────────────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    body { animation: pageFadeIn 0.35s ease-out both; }
+    @keyframes pageFadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    body.fade-out { opacity: 0; transform: translateY(6px); transition: opacity 0.22s ease, transform 0.22s ease; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+      body { animation: none; }
     }
 
-    @media (max-width: 680px) {
-      :root { --section-pad: 72px 20px; }
+    /* ─── Responsive ──────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
       .nav-links, .nav-cta { display: none; }
-      .nav-toggle           { display: flex; }
-      .page-hero            { padding: 48px 20px 52px; }
-      .page-hero h1         { font-size: 1.85rem; }
-      .page-hero-trust .trust-sep { display: none; }
-      .checklist-grid       { grid-template-columns: 1fr; }
-      .engagement-row       { grid-template-columns: 1fr; }
-      .footer-top           { grid-template-columns: 1fr; }
-      .footer-bottom        { flex-direction: column; align-items: flex-start; }
+      .nav-toggle { display: flex; }
     }
-
-    @media (max-width: 480px) {
-      .page-hero h1 { font-size: 1.6rem; }
+    @media (max-width: 860px) {
+      .audit-row { grid-template-columns: 1fr; gap: 24px; }
+      .partner-inner { grid-template-columns: 1fr; gap: 48px; }
+      .engagement-cols { grid-template-columns: 1fr; }
+      .engagement-col { border-right: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
     }
-
-    /* ─── Page Transition ───────────────────────────────────────────────── */
-    body { animation: pageFadeIn 0.4s ease forwards; }
-    @keyframes pageFadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
+    @media (max-width: 600px) {
+      .page-header { padding: 64px 20px 56px; }
+      .audits-inner, .partner-inner, .engagement-inner { padding-left: 20px; padding-right: 20px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
-    body.fade-out {
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.25s ease, transform 0.25s ease;
-    }
-    /* ─── Scroll Reveal ─────────────────────────────────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .icon {
-      display: inline-block;
-      vertical-align: middle;
-      width: 24px;
-      height: 24px;
-      stroke: #1a6bcc;
-      stroke-width: 1.5;
-      fill: none;
-      flex-shrink: 0;
-    }
-    .icon-white { stroke: #ffffff; }
-    .icon-orange { stroke: #e86a2e; }
-    /* Engagement Models Strip */
-    .engagement-strip { background: #f0f4fa; padding: 64px 24px; }
-    .engagement-strip-inner { max-width: var(--max-w); margin: 0 auto; }
-    .engagement-strip .eyebrow { display: block; text-align: center; margin-bottom: 40px; }
-    .engagement-strip-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-    .engagement-strip-col strong { display: block; font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-    .engagement-strip-col p { font-size: .92rem; color: var(--text-mid); line-height: 1.65; margin: 0; }
-    @media (max-width: 680px) { .engagement-strip-cols { grid-template-columns: 1fr; } }
-    /* Cisco Badge */
-    .cisco-badge-link { display: inline-block; transition: opacity 0.2s ease; }
-    .cisco-badge-link:hover { opacity: 0.85; }
   </style>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0S3B57YQPV"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -961,13 +516,10 @@
     gtag('js', new Date());
     gtag('config', 'G-0S3B57YQPV');
   </script>
-
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     NAV
-════════════════════════════════════════════════════════════════ -->
+<!-- ── NAV ──────────────────────────────────────────────────────────────── -->
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="Solution Track Consulting home">
@@ -981,9 +533,7 @@
     </ul>
     <div class="nav-cta">
       <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
-         class="btn btn-primary" target="_blank" rel="noopener">
-        Talk to Stephen
-      </a>
+         class="btn btn-primary" target="_blank" rel="noopener">Talk to Stephen</a>
     </div>
     <button class="nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false" id="navToggle">
       <span></span><span></span><span></span>
@@ -991,206 +541,96 @@
   </div>
 </nav>
 
-<!-- Mobile nav -->
-<div class="nav-mobile" id="navMobile" role="dialog" aria-label="Mobile menu">
+<nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
   <a href="index.html">Home</a>
   <a href="services.html" class="active">Services</a>
   <a href="about.html">About</a>
   <a href="contact.html">Contact</a>
   <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
-     class="btn btn-primary" target="_blank" rel="noopener">
-    Discuss Your Project
-  </a>
-</div>
+     class="btn btn-primary" target="_blank" rel="noopener">Talk to Stephen</a>
+</nav>
 
 
-<!-- ═══════════════════════════════════════════════════════════════
-     BREADCRUMB
-════════════════════════════════════════════════════════════════ -->
-<div class="breadcrumb-bar">
-  <nav class="breadcrumb" aria-label="Breadcrumb">
+<!-- ── BREADCRUMB ────────────────────────────────────────────────────────── -->
+<div class="page-breadcrumb" aria-label="Breadcrumb">
+  <div class="breadcrumb-inner">
     <a href="index.html">Home</a>
-    <span class="breadcrumb-sep">›</span>
-    <span class="breadcrumb-current">Services</span>
-  </nav>
+    <span aria-hidden="true">/</span>
+    <span>Services</span>
+  </div>
 </div>
 
 
-<!-- ═══════════════════════════════════════════════════════════════
-     PAGE HERO
-════════════════════════════════════════════════════════════════ -->
-<section class="page-hero" id="top">
-  <div class="page-hero-dots page-hero-dots-1"></div>
-  <div class="page-hero-dots page-hero-dots-2"></div>
-
-  <div class="page-hero-inner">
-    <div class="page-hero-eyebrow">
-      <span class="page-hero-dot"></span>
-      Cisco UC &amp; Infrastructure Engineering
-    </div>
-
+<!-- ── PAGE HEADER ───────────────────────────────────────────────────────── -->
+<header class="page-header">
+  <div class="page-header-inner">
     <h1>Cisco UC Services</h1>
-
-    <p class="page-hero-sub">
-      Senior-level engineering for Enterprise IT teams and the organizations that depend on them.
-    </p>
-
-    <div class="page-hero-trust">
-      <div class="trust-item">
-        <span class="trust-item-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-               stroke-linejoin="round" style="width:14px;height:14px">
-            <circle cx="12" cy="8" r="6"/>
-            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
-          </svg>
-        </span>
-        25+ Years Experience
-      </div>
-      <div class="trust-sep"></div>
-      <div class="trust-item">
-        <span class="trust-item-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-               stroke-linejoin="round" style="width:14px;height:14px">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-        </span>
-        Cisco 360 Partner
-      </div>
-      <div class="trust-sep"></div>
-      <div class="trust-item">
-        <span class="trust-item-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-               stroke-linejoin="round" style="width:14px;height:14px">
-            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
-            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
-            <path d="M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
-            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
-            <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/>
-          </svg>
-        </span>
-        Veteran-Owned
-      </div>
-      <div class="trust-sep"></div>
-      <div class="trust-item">
-        <span class="trust-item-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-               stroke-linejoin="round" style="width:14px;height:14px">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            <path d="m9 12 2 2 4-4"/>
-          </svg>
-        </span>
-        E911 Specialists
-      </div>
-      <div class="trust-sep"></div>
-      <div class="trust-item">
-        <span class="trust-item-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-               stroke-linejoin="round" style="width:14px;height:14px">
-            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
-        </span>
-        Portland Metro
-      </div>
-    </div>
+    <p class="page-header-sub">Senior-level engineering for Enterprise IT teams and the service providers that support them.</p>
   </div>
-</section>
+</header>
 
 
-<!-- ═══════════════════════════════════════════════════════════════
-     SECTION 2 — STRATEGIC AUDITS
-════════════════════════════════════════════════════════════════ -->
+<!-- ── STRATEGIC AUDITS ──────────────────────────────────────────────────── -->
 <section class="audits-section" id="audits">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Strategic Audits</h2>
-      <p class="section-subtitle">
-        Assess your environment before committing to a major change. These engagements surface what's actually there before anyone touches a config.
-      </p>
+  <div class="audits-inner">
+    <div class="audits-header reveal">
+      <p class="section-label">Strategic Audits</p>
+      <h2>Assess your environment before committing to a major change.</h2>
+      <p>These engagements surface what is actually in your UC environment before anyone touches a config. No assumptions, no surprises mid-project.</p>
     </div>
 
-    <div class="audits-grid">
+    <div class="audits-list">
 
-      <!-- Card 1: E911 -->
-      <div class="audit-card reveal">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0-10.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.25-8.25-3.286Zm0 13.036h.008v.008H12v-.008Z" /></svg>
-        <h3>E911 Strategic Integrity Audit</h3>
-        <p>
-          Most enterprises own the tools but lack the cross-functional alignment to make
-          them effective. If your network discovery, physical facility mapping, and voice
-          configuration aren't in sync, you are carrying unmitigated risk under Kari's
-          Law and RAY BAUM's Act.
-        </p>
-        <div class="audit-phases">
-          <span class="audit-phase">Assessment</span>
-          <span class="audit-phase-arrow">→</span>
-          <span class="audit-phase">Onsite Validation</span>
-          <span class="audit-phase-arrow">→</span>
-          <span class="audit-phase">Managed Governance</span>
+      <div class="audit-row reveal">
+        <div>
+          <h3>E911 Strategic Integrity Audit</h3>
+          <p class="audit-row-desc">Most enterprises own the tools but lack the cross-functional alignment to make them effective. If your network discovery, physical facility mapping, and voice configuration are not in sync, you are carrying unmitigated risk under Kari&rsquo;s Law and RAY BAUM&rsquo;s Act.</p>
+          <div class="audit-phases">
+            <span class="audit-phase">Assessment</span>
+            <span class="audit-phase-sep">&rarr;</span>
+            <span class="audit-phase">Onsite Validation</span>
+            <span class="audit-phase-sep">&rarr;</span>
+            <span class="audit-phase">Managed Governance</span>
+          </div>
         </div>
-        <div class="audit-sectors">
-          <strong>Sectors served:</strong> Healthcare &middot; Education &middot; Manufacturing
-        </div>
-        <div class="audit-card-footer">
-          <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
-             class="btn btn-primary btn-sm" target="_blank" rel="noopener">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                 stroke-linejoin="round" style="width:14px;height:14px">
-              <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
-            </svg>
-            Schedule Your 15-Min Review
+        <div class="audit-row-action">
+          <p class="audit-meta">Sectors: Healthcare &middot; Education &middot; Manufacturing</p>
+          <a href="e911-integrity.html" class="audit-detail-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            Full service details
           </a>
+          <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
+             class="btn btn-primary btn-sm" target="_blank" rel="noopener">Schedule a 15-Min Review</a>
         </div>
       </div>
 
-      <!-- Card 2: Migration -->
-      <div class="audit-card reveal" style="transition-delay:.1s">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
-        <h3>Forensic Migration Audit</h3>
-        <p>
-          Before you commit to a CUCM-to-Webex or cloud UC migration, you need to know
-          what you're actually working with. Hidden dial plan debt, undocumented
-          integrations, and legacy configurations can turn a planned migration into a
-          multi-month incident.
-        </p>
-        <div class="audit-card-footer">
-          <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
-             class="btn btn-primary btn-sm" target="_blank" rel="noopener">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                 stroke-linejoin="round" style="width:14px;height:14px">
-              <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
-            </svg>
-            Schedule a Discovery Call
+      <div class="audit-row reveal" style="transition-delay:.08s">
+        <div>
+          <h3>Forensic Migration Audit</h3>
+          <p class="audit-row-desc">Before you commit to a CUCM-to-Webex or cloud UC migration, you need to know what you are actually working with. Hidden dial plan debt, undocumented integrations, and legacy configurations can turn a planned migration into a multi-month incident.</p>
+        </div>
+        <div class="audit-row-action">
+          <a href="migration-audit.html" class="audit-detail-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            Full service details
           </a>
+          <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
+             class="btn btn-primary btn-sm" target="_blank" rel="noopener">Schedule a Discovery Call</a>
         </div>
       </div>
 
-      <!-- Card 3: Operational -->
-      <div class="audit-card reveal" style="transition-delay:.2s">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
-        <h3>Operational Integrity Audit</h3>
-        <p>
-          A systematic review of your UC environment's day-to-day health, configuration
-          drift, unmanaged technical debt, and undocumented changes that create
-          compounding risk over time.
-        </p>
-        <div class="audit-card-footer">
-          <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
-             class="btn btn-primary btn-sm" target="_blank" rel="noopener">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                 stroke-linejoin="round" style="width:14px;height:14px">
-              <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
-            </svg>
-            Schedule a Discovery Call
+      <div class="audit-row reveal" style="transition-delay:.16s">
+        <div>
+          <h3>Operational Integrity Audit</h3>
+          <p class="audit-row-desc">A systematic review of your UC environment&rsquo;s day-to-day health, configuration drift, unmanaged technical debt, and undocumented changes that create compounding risk over time.</p>
+        </div>
+        <div class="audit-row-action">
+          <a href="operational-audit.html" class="audit-detail-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            Full service details
           </a>
+          <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
+             class="btn btn-primary btn-sm" target="_blank" rel="noopener">Schedule a Discovery Call</a>
         </div>
       </div>
 
@@ -1198,123 +638,68 @@
   </div>
 </section>
 
-<div class="section-divider"></div>
 
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SECTION 4 — PARTNER CAPACITY
-════════════════════════════════════════════════════════════════ -->
+<!-- ── PARTNER CAPACITY ───────────────────────────────────────────────────── -->
 <section class="partner-section" id="partner">
-  <div class="dots-accent" style="bottom:40px;right:60px;"></div>
-  <div class="container">
-    <div class="partner-inner reveal">
+  <div class="partner-inner">
 
-      <div class="partner-lead">
-        <span class="eyebrow">Partner Capacity</span>
-        <h2>Senior UC Engineering, When You Need It.</h2>
-        <p>
-          White-label Cisco UC and Contact Center support for IT Service Providers. You stay client-facing. We handle the engineering. Your clients never know the difference.
-        </p>
+    <div class="partner-lead reveal">
+      <p class="partner-kicker">Partner Capacity</p>
+      <h2>Senior UC Engineering, When You Need It.</h2>
+      <p>White-label Cisco UC and Contact Center support for IT Service Providers. You stay client-facing. We handle the engineering. Your clients never know the difference.</p>
 
-        <div class="feature-rows">
-          <div class="feature-row">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.25-8.25-3.286Z" /></svg>
-            <div class="feature-row-body">
-              <strong>Client Confidentiality</strong>
-              <p>Your brand stays front. We work invisibly.</p>
-            </div>
-          </div>
-          <div class="feature-row">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
-            <div class="feature-row-body">
-              <strong>Tier-3 Depth</strong>
-              <p>We solve the escalations your team can't close and vendors won't prioritize.</p>
-            </div>
-          </div>
-          <div class="feature-row">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0 1 18 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3 1.5 1.5 3-3.75" /></svg>
-            <div class="feature-row-body">
-              <strong>Project-Based</strong>
-              <p>Scoped engagements. No retainer required to get started.</p>
-            </div>
-          </div>
+      <div class="feature-rows">
+        <div class="feature-row">
+          <h4>Client Confidentiality</h4>
+          <p>Your brand stays front. We work invisibly under NDA.</p>
         </div>
-
-        <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
-           class="btn btn-primary" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-               stroke-linejoin="round" style="width:16px;height:16px">
-            <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
-          </svg>
-          Schedule a Partner Intro Call
-        </a>
-      </div>
-
-      <div>
-        <div class="checklist-box">
-          <h4>Services Included</h4>
-          <div class="checklist-grid">
-            <div class="checklist-item">
-              <span class="checklist-check">✓</span>
-              CUCM administration and troubleshooting
-            </div>
-            <div class="checklist-item">
-              <span class="checklist-check">✓</span>
-              Webex Calling and UCM Cloud
-            </div>
-            <div class="checklist-item">
-              <span class="checklist-check">✓</span>
-              Contact Center (UCCX, Webex CC, UCCE)
-            </div>
-            <div class="checklist-item">
-              <span class="checklist-check">✓</span>
-              SIP trunk configuration
-            </div>
-            <div class="checklist-item">
-              <span class="checklist-check">✓</span>
-              E911 compliance remediation
-            </div>
-            <div class="checklist-item">
-              <span class="checklist-check">✓</span>
-              Complex migrations (CUCM to Webex, Teams, Amazon Connect)
-            </div>
-            <div class="checklist-item">
-              <span class="checklist-check">✓</span>
-              Dial plan design and cleanup
-            </div>
-            <div class="checklist-item">
-              <span class="checklist-check">✓</span>
-              Technical documentation and knowledge transfer
-            </div>
-          </div>
+        <div class="feature-row">
+          <h4>Tier-3 Depth</h4>
+          <p>We solve the escalations your team cannot close and vendors will not prioritize.</p>
+        </div>
+        <div class="feature-row">
+          <h4>Project-Based</h4>
+          <p>Scoped engagements. No retainer required to get started.</p>
         </div>
       </div>
 
+      <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
+         class="btn btn-primary" target="_blank" rel="noopener">Schedule a Partner Intro Call</a>
     </div>
+
+    <div class="checklist-panel reveal" style="transition-delay:.1s" aria-label="Services included">
+      <p class="checklist-panel-head">Services Included</p>
+      <ul class="checklist-list">
+        <li>CUCM administration and troubleshooting</li>
+        <li>Webex Calling and UCM Cloud</li>
+        <li>Contact Center (UCCX, Webex CC, UCCE)</li>
+        <li>SIP trunk configuration</li>
+        <li>E911 compliance remediation</li>
+        <li>Complex migrations (CUCM to Webex, Teams, Amazon Connect)</li>
+        <li>Dial plan design and cleanup</li>
+        <li>Technical documentation and knowledge transfer</li>
+      </ul>
+    </div>
+
   </div>
 </section>
 
-<div class="section-divider"></div>
 
-
-<!-- ═══════════════════════════════════════════════════════════════
-     ENGAGEMENT MODELS STRIP
-════════════════════════════════════════════════════════════════ -->
-<section class="engagement-strip">
-  <div class="engagement-strip-inner">
-    <span class="eyebrow">How Engagements Work</span>
-    <div class="engagement-strip-cols">
-      <div class="engagement-strip-col">
-        <strong>Project-Based</strong>
+<!-- ── ENGAGEMENT MODELS ──────────────────────────────────────────────────── -->
+<section class="engagement-section" id="engagement">
+  <div class="engagement-inner">
+    <h2 class="reveal">How engagements work</h2>
+    <div class="engagement-cols">
+      <div class="engagement-col reveal">
+        <h3>Project-Based</h3>
         <p>Defined scope, fixed deliverables, clean handoff. You know exactly what you are getting.</p>
       </div>
-      <div class="engagement-strip-col">
-        <strong>Retainer</strong>
+      <div class="engagement-col reveal" style="transition-delay:.08s">
+        <h3>Retainer</h3>
         <p>Ongoing senior UC support on a monthly basis. We stay close to your environment.</p>
       </div>
-      <div class="engagement-strip-col">
-        <strong>Subcontract</strong>
+      <div class="engagement-col reveal" style="transition-delay:.16s">
+        <h3>Subcontract</h3>
         <p>Embedded on your team for a specific engagement. Your client never knows we are there.</p>
       </div>
     </div>
@@ -1322,49 +707,28 @@
 </section>
 
 
-<!-- ═══════════════════════════════════════════════════════════════
-     BOTTOM CTA BANNER
-════════════════════════════════════════════════════════════════ -->
+<!-- ── CTA BAND ───────────────────────────────────────────────────────────── -->
 <section class="cta-band" id="contact-cta">
-  <div class="cta-band-dots cta-band-dots-1"></div>
-  <div class="cta-band-dots cta-band-dots-2"></div>
-  <h2>Ready to Talk About Your Environment?</h2>
-  <p>
-    No sales pitch. A straight conversation about what you are dealing with.
-  </p>
+  <h2>Ready to talk about your environment?</h2>
+  <p>No sales pitch. A straight conversation about what you are dealing with.</p>
   <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
-     class="btn btn-primary" target="_blank" rel="noopener">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="2" stroke-linecap="round"
-         stroke-linejoin="round" style="width:16px;height:16px">
-      <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
-    </svg>
-    Book a 20-Minute Call
-  </a>
+     class="btn btn-primary" target="_blank" rel="noopener">Book a 20-Minute Call</a>
 </section>
 
 
-<!-- ═══════════════════════════════════════════════════════════════
-     FOOTER
-════════════════════════════════════════════════════════════════ -->
+<!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="https://www.solutiontrackconsulting.com/img/STC-logo-blue2-1.png"
-             alt="Solution Track Consulting" />
-        <p>
-          Senior-level Cisco UC, Contact Center, and Network Infrastructure engineering
-          for Enterprise IT teams and Service Providers.
-        </p>
+        <img src="https://www.solutiontrackconsulting.com/img/STC-logo-blue2-1.png" alt="Solution Track Consulting" />
+        <p>Senior-level Cisco UC, Contact Center, and Network Infrastructure engineering for Enterprise IT teams and Service Providers.</p>
         <div class="footer-badge">
-          <a href="https://www.cisco.com/c/en/us/partners.html" class="cisco-badge-link" target="_blank" rel="noopener">
-            <img src="assets/Cisco_360Partners_Logo_Partner_fc.png"
-                 alt="Cisco 360 Partner" />
+          <a href="https://www.cisco.com/c/en/us/partners.html" target="_blank" rel="noopener" aria-label="Cisco 360 Partner">
+            <img src="assets/Cisco_360Partners_Logo_Partner_fc.png" alt="Cisco 360 Partner" loading="lazy" />
           </a>
         </div>
       </div>
-
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
@@ -1375,7 +739,6 @@
           <li><a href="services.html">Systems &amp; Networking</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
@@ -1384,115 +747,83 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
-
       <div class="footer-col footer-contact">
         <h4>Contact</h4>
         <p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-               stroke-linejoin="round">
-            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
           Portland Metro, Oregon
         </p>
         <p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-               stroke-linejoin="round">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.41 2 2 0 0 1 3.56 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.46a16 16 0 0 0 5.55 5.55l.92-.92a2 2 0 0 1 2.12-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.41 2 2 0 0 1 3.56 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.46a16 16 0 0 0 5.55 5.55l.92-.92a2 2 0 0 1 2.12-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <a href="tel:5039127788">503-912-7788</a>
         </p>
         <p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-               stroke-linejoin="round">
-            <rect width="20" height="16" x="2" y="4" rx="2"/>
-            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           <a href="mailto:info@solutiontrackconsulting.com">info@solutiontrackconsulting.com</a>
         </p>
       </div>
     </div>
-
     <div class="footer-bottom">
-      <p>&copy; <span id="footerYear"></span> Solution Track Consulting. All rights reserved.
-         &nbsp;&middot;&nbsp; Veteran-Owned Business</p>
+      <p>&copy; <span id="footerYear"></span> Solution Track Consulting. All rights reserved. &nbsp;&middot;&nbsp; Veteran-Owned Business</p>
       <div class="footer-bottom-links">
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <a href="services.html">Services</a>
+        <a href="privacy-policy.html">Privacy</a>
       </div>
     </div>
   </div>
 </footer>
 
 
-<!-- ═══════════════════════════════════════════════════════════════
-     JS
-════════════════════════════════════════════════════════════════ -->
 <script>
   document.getElementById('footerYear').textContent = new Date().getFullYear();
-
-  const nav = document.querySelector('.site-nav');
-  window.addEventListener('scroll', () => {
-    nav.style.boxShadow = window.scrollY > 20
-      ? '0 4px 24px rgba(0,0,0,.4)'
-      : 'none';
-  }, { passive: true });
 
   const toggle    = document.getElementById('navToggle');
   const mobileNav = document.getElementById('navMobile');
 
-  function openMobileNav() {
+  function openNav() {
     mobileNav.classList.add('open');
     toggle.classList.add('open');
     toggle.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
   }
-  function closeMobileNav() {
+  function closeNav() {
     mobileNav.classList.remove('open');
     toggle.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
 
-  toggle.addEventListener('click', (e) => {
+  toggle.addEventListener('click', e => {
     e.stopPropagation();
-    mobileNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
+    mobileNav.classList.contains('open') ? closeNav() : openNav();
   });
-  mobileNav.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMobileNav));
-  document.addEventListener('click', (e) => {
-    if (!nav.contains(e.target) && !mobileNav.contains(e.target)) closeMobileNav();
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+  document.addEventListener('click', e => {
+    if (!document.querySelector('.site-nav').contains(e.target) && !mobileNav.contains(e.target)) closeNav();
   });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMobileNav();
-  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
 
-  // Page fade transition
   document.querySelectorAll('a[href]').forEach(link => {
     const href = link.getAttribute('href');
     if (href && !href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel') && !href.startsWith('#')) {
       link.addEventListener('click', function(e) {
         e.preventDefault();
         document.body.classList.add('fade-out');
-        setTimeout(() => { window.location.href = href; }, 250);
+        setTimeout(() => { window.location.href = href; }, 220);
       });
     }
   });
 
-  // Scroll reveal
-  const revealElements = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries) => {
+  const revealObs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
+        revealObs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
-  revealElements.forEach(el => revealObserver.observe(el));
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 </script>
 
 </body>

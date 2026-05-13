@@ -1,173 +1,102 @@
-<!-- STC Prototype v1: GitHub Pages Demo -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cisco UC & Infrastructure Consulting | Solution Track Consulting</title>
+  <title>Cisco UC &amp; Infrastructure Consulting | Solution Track Consulting</title>
   <meta name="description" content="Senior-level Cisco UC, Contact Center, and E911 compliance engineering for enterprise IT teams and service providers. Based in Portland. Available nationwide.">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
-    /* ─── Reset & Base ─────────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ─── Tokens ──────────────────────────────────────────────────────────── */
     :root {
-      --navy:        #0a1f44;
-      --navy-mid:    #112958;
-      --navy-light:  #1e3a6e;
-      --blue:        #1a6bcc;
-      --blue-hover:  #145db3;
-      --orange:      #e86a2e;
-      --orange-hover:#d05a20;
-      --bg-alt:      #f0f4fa;
-      --bg-white:    #ffffff;
-      --text-dark:   #0d1b2e;
-      --text-mid:    #3a4a60;
-      --text-light:  #6b7a96;
-      --border:      #d8e2f0;
-      --radius:      6px;
-      --radius-lg:   12px;
-      --shadow-sm:   0 2px 8px rgba(10,31,68,.08);
-      --shadow-md:   0 6px 24px rgba(10,31,68,.13);
-      --shadow-lg:   0 16px 48px rgba(10,31,68,.18);
-      --font:        'Inter', system-ui, -apple-system, sans-serif;
-      --max-w:       1140px;
-      --section-pad: 96px 24px;
+      --blue:           #273C77;
+      --blue-lift:      #4163B1;
+      --orange:         #EF6B51;
+      --link:           #0C5394;
+      --surface:        #FAFBFE;
+      --surface-muted:  #F2F4F8;
+      --border:         #D0D5DD;
+      --text:           #111520;
+      --text-body:      #33475B;
+      --text-mid:       #6B7A8D;
+      --font-head:      'IBM Plex Sans', system-ui, sans-serif;
+      --font-body:      'Inter', system-ui, sans-serif;
+      --max-w:          1100px;
     }
 
+    /* ─── Reset ───────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: var(--font);
-      font-size: 16px;
-      line-height: 1.65;
-      color: var(--text-dark);
-      background: var(--bg-white);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--surface);
       -webkit-font-smoothing: antialiased;
     }
-
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ─── Typography helpers ────────────────────────────────────────────── */
-    .eyebrow {
-      display: inline-block;
-      font-size: 11px;
+    h1, h2, h3, h4 {
+      font-family: var(--font-head);
       font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 14px;
+      line-height: 1.2;
+      text-wrap: balance;
+    }
+    :focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+      border-radius: 2px;
     }
 
-    h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; }
-
-    .section-title {
-      font-size: clamp(1.65rem, 3vw, 2.2rem);
-      color: var(--navy);
-      margin-bottom: 16px;
-    }
-    .section-subtitle {
-      font-size: 1.05rem;
-      color: var(--text-mid);
-      max-width: 640px;
-    }
-    .section-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-    .section-header .section-subtitle { margin: 0 auto; }
-
-    /* ─── Buttons ───────────────────────────────────────────────────────── */
+    /* ─── Buttons ─────────────────────────────────────────────────────────── */
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 14px 30px;
-      border-radius: 4px;
-      font-family: var(--font);
-      font-size: .95rem;
-      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 3px;
+      font-family: var(--font-head);
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
       cursor: pointer;
-      border: 2px solid transparent;
-      transition: background .2s, color .2s, border-color .2s, box-shadow .2s, transform .15s;
+      border: 1px solid transparent;
+      transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
       white-space: nowrap;
+      text-decoration: none;
     }
-    .btn:hover { transform: translateY(-2px); }
-    .btn:active { transform: translateY(0); }
-
-    /* Primary: blue → orange on hover */
     .btn-primary {
       background: var(--blue);
-      color: #fff;
+      color: #F8FBFF;
       border-color: var(--blue);
-      box-shadow: 0 3px 12px rgba(26,107,204,.30);
     }
-    .btn-primary:hover {
-      background: var(--orange);
-      border-color: var(--orange);
-      box-shadow: 0 6px 20px rgba(232,106,46,.40);
-    }
-
+    .btn-primary:hover { background: var(--blue-lift); border-color: var(--blue-lift); }
     .btn-outline {
       background: transparent;
       color: var(--blue);
       border-color: var(--blue);
     }
-    .btn-outline:hover {
-      background: var(--blue);
-      color: #fff;
-    }
+    .btn-outline:hover { background: var(--blue); color: #F8FBFF; }
 
-    .btn-ghost {
-      background: rgba(255,255,255,.12);
-      color: #fff;
-      border-color: rgba(255,255,255,.4);
-    }
-    .btn-ghost:hover {
-      background: rgba(255,255,255,.22);
-      border-color: rgba(255,255,255,.7);
-    }
-
-    /* ─── Dot accent decoration ─────────────────────────────────────────── */
-    .dots-accent {
-      position: absolute;
-      width: 160px;
-      height: 160px;
-      background-image: radial-gradient(circle, var(--blue) 1.5px, transparent 1.5px);
-      background-size: 18px 18px;
-      opacity: .13;
-      pointer-events: none;
-    }
-
-    /* ─── NAV ───────────────────────────────────────────────────────────── */
+    /* ─── NAV ─────────────────────────────────────────────────────────────── */
     .site-nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 1000;
-      background: rgba(10,31,68,.97);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,.07);
-      height: 68px;
+      height: 64px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
-      transition: box-shadow .3s;
     }
-
     .nav-inner {
       display: flex;
       align-items: center;
@@ -177,29 +106,23 @@
       margin: 0 auto;
       padding: 0 24px;
     }
-
-    .nav-logo img { height: 40px; width: auto; }
-
+    .nav-logo img { height: 36px; width: auto; }
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 4px;
       list-style: none;
     }
     .nav-links a {
       padding: 8px 14px;
-      border-radius: 6px;
-      font-size: .9rem;
-      font-weight: 500;
-      color: rgba(255,255,255,.82);
-      transition: color .2s, background .2s;
+      font-family: var(--font-head);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--blue);
+      transition: color 0.15s;
     }
-    .nav-links a:hover { color: #fff; background: rgba(255,255,255,.08); }
+    .nav-links a:hover { color: var(--blue-lift); }
+    .nav-cta { margin-left: 16px; }
 
-    .nav-cta { margin-left: 8px; }
-    .nav-cta .btn { padding: 9px 20px; font-size: .87rem; }
-
-    /* Hamburger */
     .nav-toggle {
       display: none;
       flex-direction: column;
@@ -211,10 +134,9 @@
     }
     .nav-toggle span {
       display: block;
-      width: 24px; height: 2px;
-      background: #fff;
-      border-radius: 2px;
-      transition: transform .25s, opacity .25s;
+      width: 22px; height: 2px;
+      background: var(--blue);
+      transition: transform 0.22s ease-out, opacity 0.18s;
     }
     .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-toggle.open span:nth-child(2) { opacity: 0; }
@@ -223,724 +145,360 @@
     .nav-mobile {
       display: none;
       flex-direction: column;
-      background: rgba(10,31,68,.99);
       position: fixed;
-      top: 68px; left: 0; right: 0;
+      top: 64px; left: 0; right: 0;
       z-index: 999;
-      padding: 16px 24px 28px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      box-shadow: 0 12px 32px rgba(0,0,0,.4);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px 24px;
     }
     .nav-mobile.open { display: flex; }
     .nav-mobile a {
       padding: 14px 0;
-      color: rgba(255,255,255,.82);
+      font-family: var(--font-head);
       font-size: 1rem;
-      font-weight: 500;
-      border-bottom: 1px solid rgba(255,255,255,.07);
-      transition: color .15s;
+      font-weight: 600;
+      color: var(--blue);
+      border-bottom: 1px solid var(--border);
     }
-    .nav-mobile a:last-of-type { border-bottom: none; }
-    .nav-mobile a:hover { color: #fff; }
-    .nav-mobile .btn {
-      margin-top: 16px;
-      justify-content: center;
-      width: 100%;
-    }
+    .nav-mobile a:last-of-type:not(.btn) { border-bottom: none; }
+    .nav-mobile .btn { margin-top: 16px; justify-content: center; }
 
-    /* ─── HERO ──────────────────────────────────────────────────────────── */
+    /* ─── HERO ────────────────────────────────────────────────────────────── */
     .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 140px 24px 80px;
-      background: var(--navy);
-      background: linear-gradient(135deg, #0a1f44 0%, #112958 55%, #0d2d5a 100%);
-      overflow: hidden;
+      padding: 128px 24px 96px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
     }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 70% 60% at 70% 40%, rgba(26,107,204,.18) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(232,106,46,.07) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .hero-dots-1 { top: 60px; right: 80px; }
-    .hero-dots-2 { bottom: 80px; left: 40px; }
-
     .hero-inner {
-      position: relative;
-      z-index: 1;
       max-width: var(--max-w);
       margin: 0 auto;
-      width: 100%;
     }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(26,107,204,.2);
-      border: 1px solid rgba(26,107,204,.4);
-      border-radius: 40px;
-      padding: 6px 16px 6px 10px;
-      font-size: .82rem;
-      font-weight: 600;
-      color: rgba(255,255,255,.9);
-      margin-bottom: 24px;
-    }
-    .hero-badge-dot {
-      width: 8px; height: 8px;
-      background: var(--orange);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .hero-tagline {
-      font-size: 1rem;
+    .hero-kicker {
+      font-family: var(--font-head);
+      font-size: 0.875rem;
       font-weight: 700;
-      color: rgba(255,255,255,.55);
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    .hero-title {
-      font-size: clamp(2rem, 4.5vw, 3.4rem);
-      color: #fff;
-      line-height: 1.12;
+      color: var(--blue);
+      letter-spacing: 0.01em;
       margin-bottom: 20px;
-      font-weight: 800;
     }
-    .hero-title span { color: var(--orange); }
-
+    .hero-title {
+      font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+      color: var(--text);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      max-width: 18ch;
+    }
     .hero-desc {
-      font-size: 1.05rem;
-      color: rgba(255,255,255,.72);
-      max-width: 560px;
+      font-size: 1.125rem;
+      color: var(--text-body);
+      line-height: 1.7;
+      max-width: 52ch;
       margin-bottom: 40px;
-      line-height: 1.78;
     }
-
     .hero-actions {
       display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 48px;
-    }
-
-    /* Stat bubbles — blue inline-flex cards */
-    .hero-stats {
-      display: flex;
-      flex-wrap: wrap;
       gap: 12px;
-    }
-    .hero-stat {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: var(--blue);
-      border-radius: var(--radius);
-      padding: 16px 24px;
-      min-width: 100px;
-      box-shadow: 0 4px 16px rgba(26,107,204,.35);
-    }
-    .hero-stat-number {
-      font-size: 2.1rem;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .hero-stat-label {
-      font-size: .7rem;
-      font-weight: 700;
-      color: rgba(255,255,255,.7);
-      text-transform: uppercase;
-      letter-spacing: .07em;
-      text-align: center;
-    }
-
-    /* Hero right panel */
-    .hero-logo-area {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-    }
-    .hero-logo-card {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: var(--radius-lg);
-      padding: 44px 52px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 22px;
-      width: 100%;
-      backdrop-filter: blur(8px);
-    }
-    .hero-logo-card img {
-      max-height: 54px;
-      width: auto;
-      filter: brightness(0) invert(1);
-      opacity: .92;
-    }
-    .hero-logo-divider {
-      width: 40px; height: 1px;
-      background: rgba(255,255,255,.18);
-    }
-    .hero-partner-badge img {
-      height: 68px;
-      width: auto;
-      opacity: .82;
-      filter: brightness(0) invert(1);
-    }
-
-    /* ─── TRUST BAR ─────────────────────────────────────────────────────── */
-    .trust-bar {
-      background: var(--navy);
-      border-top: 1px solid rgba(255,255,255,.05);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-      padding: 18px 24px;
-    }
-    .trust-bar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
       flex-wrap: wrap;
+    }
+
+    /* ─── PROBLEM ─────────────────────────────────────────────────────────── */
+    .problem-section {
+      background: var(--surface-muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .problem-inner {
       max-width: var(--max-w);
       margin: 0 auto;
-    }
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      padding: 8px 22px;
-      font-size: .84rem;
-      font-weight: 600;
-      color: rgba(255,255,255,.7);
-      letter-spacing: .03em;
-    }
-    .trust-item-icon {
-      color: var(--orange);
-      display: flex;
-      align-items: center;
-      flex-shrink: 0;
-    }
-    .trust-sep {
-      width: 1px; height: 26px;
-      background: rgba(255,255,255,.1);
-      flex-shrink: 0;
-    }
-
-    /* ─── WHO WE SERVE ──────────────────────────────────────────────────── */
-    .serve-section {
-      background: var(--bg-alt);
-      padding: var(--section-pad);
-      position: relative;
-      overflow: hidden;
-    }
-    .serve-section .dots-accent { bottom: 32px; right: 48px; opacity: .1; }
-
-    .serve-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      max-width: var(--max-w);
-      margin: 0 auto;
-    }
-
-    .serve-card {
-      background: var(--bg-white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 36px 36px 32px;
-      position: relative;
-      overflow: hidden;
-      transition: box-shadow .25s, transform .2s;
-    }
-    .serve-card:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-3px);
-    }
-    .serve-card::before {
-      content: none;
-    }
-
-    .serve-card-emoji {
-      font-size: 2.4rem;
-      margin-bottom: 16px;
-      display: block;
-      line-height: 1;
-    }
-    .serve-card h3 {
-      font-size: 1.25rem;
-      color: var(--navy);
-      margin-bottom: 12px;
-    }
-    .serve-card p {
-      font-size: .97rem;
-      color: var(--text-mid);
-      line-height: 1.7;
-    }
-
-    /* ─── PAIN POINTS ───────────────────────────────────────────────────── */
-    .pain-section {
-      background: var(--bg-white);
-      padding: var(--section-pad);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pain-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
+      padding: 96px 24px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: start;
     }
-
-    .pain-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-top: 8px;
+    .problem-statement {
+      font-family: var(--font-head);
+      font-size: clamp(1.125rem, 1.75vw, 1.375rem);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.5;
+      max-width: 36ch;
+      margin-bottom: 24px;
     }
-
-    .pain-item {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      padding: 20px 22px;
-      border-radius: var(--radius);
-      background: var(--bg-alt);
-      border-left: 3px solid transparent;
-      transition: border-color .2s, box-shadow .2s;
-    }
-    .pain-item:hover {
-      border-left-color: var(--orange);
-      box-shadow: var(--shadow-sm);
-    }
-    .pain-icon {
-      width: 36px; height: 36px;
-      background: rgba(232,106,46,.12);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--orange);
-    }
-    .pain-icon svg { width: 18px; height: 18px; }
-    .pain-text {
-      font-size: .96rem;
-      color: var(--text-mid);
-      line-height: 1.58;
-      font-weight: 500;
-      padding-top: 2px;
-    }
-
-    .pain-close {
-      margin-top: 32px;
-      padding: 26px 30px;
-      background: var(--navy);
-      border-radius: var(--radius-lg);
-      color: #fff;
-      font-size: 1.05rem;
-      line-height: 1.65;
-      font-weight: 500;
-      position: relative;
-      overflow: hidden;
-    }
-    .pain-close::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--orange), var(--blue));
-    }
-    .pain-close em {
-      font-style: normal;
-      color: var(--orange);
+    .problem-close {
+      font-family: var(--font-head);
+      font-size: 0.9375rem;
       font-weight: 700;
+      color: var(--blue);
+    }
+    .problem-list {
+      border-top: 1px solid var(--border);
+    }
+    .problem-item {
+      padding: 20px 0;
+      font-size: 0.9375rem;
+      color: var(--text-body);
+      line-height: 1.6;
+      border-bottom: 1px solid var(--border);
     }
 
-    /* ─── SERVICES GRID ─────────────────────────────────────────────────── */
+    /* ─── SERVICES ────────────────────────────────────────────────────────── */
     .services-section {
-      background: var(--bg-alt);
-      padding: var(--section-pad);
-      position: relative;
-      overflow: hidden;
+      background: var(--blue);
+      border-bottom: 1px solid #1E3060;
     }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+    .services-inner {
       max-width: var(--max-w);
       margin: 0 auto;
+      padding: 96px 24px;
     }
-
-    .service-card {
-      background: var(--bg-white);
-      border-radius: var(--radius-lg);
-      padding: 32px 28px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-sm);
-      transition: box-shadow .25s, transform .2s, border-color .2s;
+    .services-header {
+      margin-bottom: 56px;
+    }
+    .section-label {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #6A8CC0;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    .services-header h2 {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      color: #EEF2FF;
+    }
+    .services-list {
+      border-top: 1px solid #3A5494;
+    }
+    .service-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      padding: 40px 0;
+      border-bottom: 1px solid #3A5494;
+      align-items: start;
+    }
+    .service-row h3 {
+      font-size: 1.125rem;
+      color: #EEF2FF;
+      margin-bottom: 10px;
+    }
+    .service-desc {
+      font-size: 0.9375rem;
+      color: #8AAAD4;
+      line-height: 1.65;
+      max-width: 50ch;
+    }
+    .service-links {
       display: flex;
       flex-direction: column;
+      gap: 12px;
+      padding-top: 2px;
     }
-    .service-card:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-4px);
-      border-color: rgba(26,107,204,.25);
-    }
-
-    .service-card-icon {
-      width: 48px; height: 48px;
-      background: rgba(26,107,204,.1);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 18px;
-      color: var(--blue);
-    }
-    .service-card-icon svg { width: 23px; height: 23px; }
-
-    .service-card h3 {
-      color: var(--navy);
-      margin-bottom: 8px;
-      font-size: 1.05rem;
-    }
-    .service-card-desc {
-      font-size: .9rem;
-      color: var(--text-mid);
-      line-height: 1.62;
-      margin-bottom: 20px;
-      flex: 1;
-    }
-    .service-links { display: flex; flex-direction: column; gap: 6px; }
     .service-link {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: .85rem;
-      font-weight: 600;
-      color: var(--blue);
-      transition: gap .15s, color .15s;
+      font-family: var(--font-head);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: #C0D8F0;
+      transition: color 0.15s, gap 0.15s;
     }
-    .service-link:hover { gap: 10px; color: var(--blue-hover); }
-    .service-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .service-link:hover { color: #EEF2FF; gap: 10px; }
+    .service-link svg { width: 13px; height: 13px; flex-shrink: 0; }
 
-    /* ─── HOW IT WORKS ──────────────────────────────────────────────────── */
+    /* ─── WHY STEPHEN ─────────────────────────────────────────────────────── */
+    .why-section {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .why-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 96px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .why-copy h2 {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .why-copy p {
+      font-size: 1rem;
+      color: var(--text-body);
+      line-height: 1.7;
+      max-width: 50ch;
+      margin-bottom: 28px;
+    }
+    .arrow-link {
+      font-family: var(--font-head);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--link);
+    }
+    .arrow-link:hover { text-decoration: underline; }
+    .why-attrs {
+      border-top: 1px solid var(--border);
+    }
+    .why-attr {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .why-attr h3 {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+    .why-attr p {
+      font-size: 0.875rem;
+      color: var(--text-body);
+      line-height: 1.55;
+    }
+
+    /* ─── HOW IT WORKS ────────────────────────────────────────────────────── */
     .how-section {
-      background: var(--bg-white);
-      padding: var(--section-pad);
-      position: relative;
-      overflow: hidden;
+      background: var(--surface-muted);
+      border-bottom: 1px solid var(--border);
     }
-
+    .how-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 96px 24px;
+    }
+    .how-header {
+      margin-bottom: 56px;
+    }
+    .how-header h2 {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .how-header p {
+      font-size: 1rem;
+      color: var(--text-body);
+      max-width: 58ch;
+      line-height: 1.7;
+    }
     .how-steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      max-width: var(--max-w);
-      margin: 0 auto 56px;
+      border-top: 1px solid var(--border);
+      margin-bottom: 56px;
     }
-
     .how-step {
-      background: var(--bg-white);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      padding: 36px 28px 32px;
-      transition: box-shadow .25s, border-color .2s;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 22px;
+      padding: 36px 40px 36px 0;
+      border-bottom: 1px solid var(--border);
     }
-    .how-step:hover {
-      box-shadow: var(--shadow-md);
-      border-color: rgba(26,107,204,.3);
+    .how-step-num {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
     }
-
-    .how-step-number {
-      flex-shrink: 0;
-      width: 64px; height: 64px;
-      background: var(--bg-alt);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.6rem;
-      font-weight: 800;
-      color: var(--navy);
-      line-height: 1;
-    }
-    .how-step:nth-child(2) .how-step-number { color: var(--blue); background: rgba(26,107,204,.1); }
-    .how-step:nth-child(3) .how-step-number { color: var(--orange); background: rgba(232,106,46,.1); }
-
-    .how-step-body { flex: 1; }
-    .how-step-body h3 {
-      color: var(--navy);
-      font-size: 1.05rem;
+    .how-step h3 {
+      font-size: 1.0625rem;
+      color: var(--text);
       margin-bottom: 10px;
-      margin-top: 6px;
     }
-    .how-step-body p {
-      font-size: .91rem;
-      color: var(--text-mid);
-      line-height: 1.68;
+    .how-step p {
+      font-size: 0.9375rem;
+      color: var(--text-body);
+      line-height: 1.65;
+      max-width: 30ch;
     }
-
     .how-cta { text-align: center; }
 
-    /* ─── TESTIMONIALS ──────────────────────────────────────────────────── */
-    .testimonials-section {
-      background: var(--bg-alt);
-      padding: var(--section-pad);
-      position: relative;
-      overflow: hidden;
-    }
-    .testimonials-section .dots-accent {
-      top: 40px; right: 60px; opacity: .1;
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      max-width: var(--max-w);
-      margin: 0 auto;
-    }
-
-    .testimonial-card {
-      background: var(--navy);
-      border-radius: var(--radius-lg);
-      padding: 40px 36px;
-      position: relative;
-      border-left: 4px solid var(--orange);
-      box-shadow: var(--shadow-md);
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .testimonial-quote-mark {
-      font-size: 5rem;
-      line-height: .6;
-      color: var(--orange);
-      opacity: .4;
-      font-family: Georgia, serif;
-      user-select: none;
-      position: absolute;
-      top: 24px; left: 32px;
-    }
-
-    .testimonial-text {
-      font-size: 1rem;
-      color: rgba(255,255,255,.88);
-      line-height: 1.78;
-      font-style: italic;
-      padding-top: 28px;
-      flex: 1;
-    }
-
-    .testimonial-attribution {
-      border-top: 1px solid rgba(255,255,255,.1);
-      padding-top: 20px;
-    }
-    .testimonial-name {
-      font-size: .88rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 3px;
-    }
-    .testimonial-role {
-      font-size: .82rem;
-      color: rgba(255,255,255,.5);
-    }
-
-    /* ─── DIFFERENTIATORS (WHY STC) ─────────────────────────────────────── */
-    .diff-section {
-      background: var(--navy);
-      padding: var(--section-pad);
-      position: relative;
-      overflow: hidden;
-    }
-    .diff-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 60% at 15% 50%, rgba(26,107,204,.15) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 40% at 85% 20%, rgba(232,106,46,.08) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .diff-dots-1 {
-      top: 40px; right: 60px;
-      background-image: radial-gradient(circle, rgba(255,255,255,.25) 1.5px, transparent 1.5px);
-    }
-    .diff-dots-2 {
-      bottom: 40px; left: 60px;
-      background-image: radial-gradient(circle, rgba(255,255,255,.25) 1.5px, transparent 1.5px);
-    }
-
-    .diff-section .section-title { color: #fff; }
-    .diff-section .section-subtitle { color: rgba(255,255,255,.6); }
-
-    /* 2-up top row, 3-up bottom row via 6-col base grid */
-    .diff-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 20px;
-      max-width: var(--max-w);
-      margin: 0 auto 56px;
-      position: relative;
-      z-index: 1;
-    }
-    .diff-card:nth-child(1),
-    .diff-card:nth-child(2) { grid-column: span 3; }
-    .diff-card:nth-child(3),
-    .diff-card:nth-child(4),
-    .diff-card:nth-child(5) { grid-column: span 2; }
-
-    .diff-card {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: var(--radius-lg);
-      padding: 32px 24px 28px;
-      transition: background .25s, border-color .2s, transform .2s;
-    }
-    .diff-card:hover {
-      background: rgba(255,255,255,.1);
-      border-color: rgba(255,255,255,.22);
-      transform: translateY(-4px);
-    }
-
-    .diff-card-emoji {
-      font-size: 2.2rem;
-      display: block;
-      margin-bottom: 16px;
-      line-height: 1;
-    }
-
-    .diff-card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 10px;
-      line-height: 1.3;
-    }
-    .diff-card p {
-      font-size: .85rem;
-      color: rgba(255,255,255,.55);
-      line-height: 1.6;
-    }
-
-    .diff-cta { text-align: center; position: relative; z-index: 1; }
-
-    /* ─── CTA BAND ──────────────────────────────────────────────────────── */
+    /* ─── CTA BAND ────────────────────────────────────────────────────────── */
     .cta-band {
-      background: linear-gradient(135deg, var(--blue) 0%, var(--navy-light) 100%);
-      padding: 88px 24px;
+      background: var(--blue);
+      padding: 96px 24px;
       text-align: center;
-      position: relative;
-      overflow: hidden;
     }
-    .cta-band::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(255,255,255,.05) 0%, transparent 70%);
-    }
-
-    .cta-band h2 { color: #fff; margin-bottom: 14px; position: relative; font-size: clamp(1.6rem, 3vw, 2.2rem); }
-    .cta-band p  {
-      color: rgba(255,255,255,.78);
-      font-size: 1.05rem;
-      margin-bottom: 36px;
-      max-width: 540px;
+    .cta-band h2 {
+      font-size: clamp(1.375rem, 2.5vw, 1.875rem);
+      color: #EEF2FF;
+      margin-bottom: 16px;
+      max-width: 50ch;
       margin-left: auto;
       margin-right: auto;
-      position: relative;
     }
-    .cta-band .btn {
+    .cta-band p {
       font-size: 1rem;
-      padding: 16px 40px;
-      position: relative;
+      color: #8AAAD4;
+      line-height: 1.7;
+      max-width: 44ch;
+      margin: 0 auto 40px;
+    }
+    .cta-band .btn-primary {
+      background: #F8FBFF;
+      color: var(--blue);
+      border-color: #F8FBFF;
+    }
+    .cta-band .btn-primary:hover {
+      background: #E8EFF8;
+      border-color: #E8EFF8;
     }
 
-    /* ─── FOOTER ────────────────────────────────────────────────────────── */
+    /* ─── FOOTER ──────────────────────────────────────────────────────────── */
     .site-footer {
-      background: #060f20;
+      background: #0E1525;
       padding: 64px 24px 32px;
-      color: rgba(255,255,255,.55);
+      color: #5A6A80;
     }
     .footer-inner { max-width: var(--max-w); margin: 0 auto; }
-
     .footer-top {
       display: grid;
       grid-template-columns: 1.4fr 1fr 1fr 1fr;
       gap: 48px;
       padding-bottom: 48px;
-      border-bottom: 1px solid rgba(255,255,255,.07);
+      border-bottom: 1px solid #1E2A40;
     }
-
     .footer-brand img {
-      height: 36px; width: auto;
+      height: 32px; width: auto;
       filter: brightness(0) invert(1);
-      opacity: .85;
+      opacity: 0.80;
       margin-bottom: 16px;
     }
     .footer-brand p {
-      font-size: .88rem;
+      font-size: 0.875rem;
       line-height: 1.65;
       margin-bottom: 20px;
+      max-width: 38ch;
     }
-    .footer-badge img {
-      width: 80px;
-      height: auto;
-    }
-
+    .footer-badge img { width: 72px; height: auto; opacity: 0.65; }
     .footer-col h4 {
-      font-size: .78rem;
+      font-family: var(--font-head);
+      font-size: 0.6875rem;
       font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.3);
+      color: #2E3D52;
+      letter-spacing: 0.1em;
       margin-bottom: 16px;
     }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-col ul li a {
-      font-size: .88rem;
-      color: rgba(255,255,255,.5);
-      transition: color .15s;
+      font-size: 0.875rem;
+      color: #4A5D74;
+      transition: color 0.15s;
     }
-    .footer-col ul li a:hover { color: rgba(255,255,255,.9); }
-
+    .footer-col ul li a:hover { color: #9AAEC0; }
     .footer-contact p {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: .88rem;
+      font-size: 0.875rem;
       margin-bottom: 10px;
     }
-    .footer-contact svg { width: 15px; height: 15px; flex-shrink: 0; color: rgba(255,255,255,.3); }
-    .footer-contact a { transition: color .15s; }
-    .footer-contact a:hover { color: rgba(255,255,255,.9); }
-
+    .footer-contact svg { width: 14px; height: 14px; flex-shrink: 0; color: #2E3D52; }
+    .footer-contact a { color: #4A5D74; transition: color 0.15s; }
+    .footer-contact a:hover { color: #9AAEC0; }
     .footer-bottom {
       padding-top: 28px;
       display: flex;
@@ -949,99 +507,63 @@
       flex-wrap: wrap;
       gap: 12px;
     }
-    .footer-bottom p { font-size: .8rem; }
+    .footer-bottom p { font-size: 0.8rem; }
     .footer-bottom-links { display: flex; gap: 24px; }
     .footer-bottom-links a {
-      font-size: .8rem;
-      color: rgba(255,255,255,.3);
-      transition: color .15s;
+      font-size: 0.8rem;
+      color: #2E3D52;
+      transition: color 0.15s;
     }
-    .footer-bottom-links a:hover { color: rgba(255,255,255,.7); }
+    .footer-bottom-links a:hover { color: #6A7E94; }
 
-    /* ─── Section divider ───────────────────────────────────────────────── */
-    .section-divider {
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--blue) 30%, var(--orange) 70%, transparent);
-      opacity: .2;
+    /* ─── Motion ──────────────────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
     }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ─── Responsive ────────────────────────────────────────────────────── */
-    @media (max-width: 900px) {
-      .serve-grid        { grid-template-columns: 1fr; }
-      .pain-inner        { grid-template-columns: 1fr; gap: 48px; }
-      .services-grid     { grid-template-columns: 1fr; }
-      .how-steps         { grid-template-columns: 1fr; }
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .diff-grid         { grid-template-columns: repeat(3, 1fr); }
-      .diff-card:nth-child(1),
-      .diff-card:nth-child(2),
-      .diff-card:nth-child(3),
-      .diff-card:nth-child(4),
-      .diff-card:nth-child(5) { grid-column: span 1; }
-      .footer-top        { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 680px) {
-      :root { --section-pad: 72px 20px; }
-      .nav-links, .nav-cta { display: none; }
-      .nav-toggle { display: flex; }
-      .hero { padding: 108px 20px 80px; }
-      .hero-title { font-size: 2rem; }
-      .hero-stats { gap: 10px; }
-      .hero-stat { padding: 14px 18px; min-width: 88px; }
-      .hero-stat-number { font-size: 1.8rem; }
-      .trust-item { padding: 8px 12px; font-size: .8rem; }
-      .trust-sep { display: none; }
-      .diff-grid { grid-template-columns: 1fr; }
-      .footer-top { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
-    }
-
-    @media (max-width: 480px) {
-      .hero-actions { flex-direction: column; }
-      .hero-actions .btn { width: 100%; justify-content: center; }
-      .hero-stats { flex-direction: column; align-items: flex-start; }
-      .hero-stat { width: 100%; flex-direction: row; justify-content: flex-start; gap: 12px; }
-      .hero-stat-number { font-size: 1.6rem; margin-bottom: 0; }
-    }
-
-    /* ─── Page Transition ───────────────────────────────────────────────── */
-    body { animation: pageFadeIn 0.4s ease forwards; }
+    body { animation: pageFadeIn 0.35s ease-out both; }
     @keyframes pageFadeIn {
-      from { opacity: 0; transform: translateY(8px); }
+      from { opacity: 0; transform: translateY(6px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     body.fade-out {
       opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.25s ease, transform 0.25s ease;
+      transform: translateY(6px);
+      transition: opacity 0.22s ease, transform 0.22s ease;
     }
-    /* ─── Scroll Reveal ─────────────────────────────────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+      body { animation: none; }
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+
+    /* ─── Responsive ──────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
     }
-    .icon {
-      display: inline-block;
-      vertical-align: middle;
-      width: 24px;
-      height: 24px;
-      stroke: #1a6bcc;
-      stroke-width: 1.5;
-      fill: none;
-      flex-shrink: 0;
+    @media (max-width: 860px) {
+      .problem-inner { grid-template-columns: 1fr; gap: 48px; }
+      .service-row { grid-template-columns: 1fr; gap: 20px; }
+      .why-inner { grid-template-columns: 1fr; gap: 56px; }
+      .how-steps { grid-template-columns: 1fr; }
+      .how-step { padding-right: 0; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
     }
-    .icon-white { stroke: #ffffff; }
-    .icon-orange { stroke: #e86a2e; }
-    /* Cisco Badge */
-    .cisco-badge-link { display: inline-block; transition: opacity 0.2s ease; }
-    .cisco-badge-link:hover { opacity: 0.85; }
+    @media (max-width: 600px) {
+      .hero { padding: 108px 20px 80px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .services-inner, .why-inner, .how-inner { padding-left: 20px; padding-right: 20px; }
+      .problem-inner { padding-left: 20px; padding-right: 20px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
   </style>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0S3B57YQPV"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -1066,28 +588,14 @@
     "addressCountry": "US"
   },
   "areaServed": "US",
-  "founder": {
-    "@type": "Person",
-    "name": "Stephen Frahm"
-  },
-  "knowsAbout": [
-    "Cisco UC",
-    "CUCM",
-    "Webex Calling",
-    "Contact Center",
-    "E911 Compliance",
-    "Kari's Law",
-    "RAY BAUM's Act",
-    "UC Migration"
-  ]
+  "founder": { "@type": "Person", "name": "Stephen Frahm" },
+  "knowsAbout": ["Cisco UC","CUCM","Webex Calling","Contact Center","E911 Compliance","Kari's Law","RAY BAUM's Act","UC Migration"]
 }
   </script>
-
 </head>
 <body>
-<!-- ═══════════════════════════════════════════════════════════════
-     NAV
-════════════════════════════════════════════════════════════════ -->
+
+<!-- ── NAV ──────────────────────────────────────────────────────────────── -->
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="Solution Track Consulting home">
@@ -1111,8 +619,7 @@
   </div>
 </nav>
 
-<!-- Mobile nav -->
-<div class="nav-mobile" id="navMobile" role="dialog" aria-label="Mobile menu">
+<nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
   <a href="index.html">Home</a>
   <a href="services.html">Services</a>
   <a href="about.html">About</a>
@@ -1121,293 +628,93 @@
      class="btn btn-primary" target="_blank" rel="noopener">
     Talk to Stephen
   </a>
-</div>
+</nav>
 
 
-<!-- ═══════════════════════════════════════════════════════════════
-     HERO
-════════════════════════════════════════════════════════════════ -->
+<!-- ── HERO ─────────────────────────────────────────────────────────────── -->
 <section class="hero" id="home">
-  <div class="dots-accent hero-dots-1"></div>
-  <div class="dots-accent hero-dots-2"></div>
-
   <div class="hero-inner">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
-        Veteran-Owned &middot; Portland Metro
-      </div>
-
-      <p class="hero-tagline">Enterprise UC &amp; Infrastructure</p>
-
-      <h1 class="hero-title">
-        We find what's been slipping through the cracks.
-      </h1>
-
-      <p class="hero-desc">
-        25 years of Cisco UC and infrastructure experience, brought to bear on the problems your team has worked around for too long.
-      </p>
-
-      <div class="hero-actions">
-        <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
-           class="btn btn-primary" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-               stroke-linejoin="round" style="width:16px;height:16px">
-            <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
-          </svg>
-          Talk to Stephen
-        </a>
-        <a href="services.html" class="btn btn-ghost">View Services</a>
-      </div>
-
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-number">25+</div>
-          <div class="hero-stat-label">Years Experience</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-number">C360</div>
-          <div class="hero-stat-label">Cisco Partner</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-number">E911</div>
-          <div class="hero-stat-label">Compliance Experts</div>
-        </div>
-      </div>
+    <p class="hero-kicker">Cisco UC &amp; Infrastructure Engineering</p>
+    <h1 class="hero-title">We find what&rsquo;s been slipping through the cracks.</h1>
+    <p class="hero-desc">25 years of Cisco UC experience, brought to bear on the problems your team has worked around for too long.</p>
+    <div class="hero-actions">
+      <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
+         class="btn btn-primary" target="_blank" rel="noopener">Talk to Stephen</a>
+      <a href="services.html" class="btn btn-outline">View Services</a>
     </div>
-
   </div>
 </section>
 
 
-<!-- ═══════════════════════════════════════════════════════════════
-     TRUST BAR
-════════════════════════════════════════════════════════════════════ -->
-<div class="trust-bar" aria-label="Trust indicators">
-  <div class="trust-bar-inner">
-    <div class="trust-item">
-      <span class="trust-item-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-             stroke-linejoin="round" style="width:15px;height:15px">
-          <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
-        </svg>
-      </span>
-      25+ Years Experience
+<!-- ── PROBLEM ───────────────────────────────────────────────────────────── -->
+<section class="problem-section" id="challenges">
+  <div class="problem-inner">
+    <div class="reveal">
+      <p class="problem-statement">Most UC environments we walk into aren&rsquo;t broken. They&rsquo;re carrying years of undocumented changes, deferred decisions, and configurations nobody owns anymore. That&rsquo;s usually what&rsquo;s causing the problem.</p>
+      <p class="problem-close">We&rsquo;ve seen all of it. We know where to look.</p>
     </div>
-    <div class="trust-sep"></div>
-    <div class="trust-item">
-      <span class="trust-item-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-             stroke-linejoin="round" style="width:15px;height:15px">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        </svg>
-      </span>
-      Cisco 360 Partner
-    </div>
-    <div class="trust-sep"></div>
-    <div class="trust-item">
-      <span class="trust-item-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-             stroke-linejoin="round" style="width:15px;height:15px">
-          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
-          <path d="M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
-          <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
-          <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/>
-        </svg>
-      </span>
-      Veteran-Owned
-    </div>
-    <div class="trust-sep"></div>
-    <div class="trust-item">
-      <span class="trust-item-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-             stroke-linejoin="round" style="width:15px;height:15px">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          <path d="m9 12 2 2 4-4"/>
-        </svg>
-      </span>
-      E911 Specialists
-    </div>
-    <div class="trust-sep"></div>
-    <div class="trust-item">
-      <span class="trust-item-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-             stroke-linejoin="round" style="width:15px;height:15px">
-          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
-        </svg>
-      </span>
-      Portland Metro
-    </div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════════════════════════════
-     PAIN POINTS
-════════════════════════════════════════════════════════════════ -->
-<section class="pain-section" id="challenges">
-  <div class="container">
-    <div class="pain-inner">
-      <div>
-        <h2 class="section-title" style="max-width:400px;">
-          Most UC environments we walk into aren't broken. They're carrying years of undocumented changes, deferred decisions, and configurations nobody owns anymore. That's usually what's causing the problem.
-        </h2>
-      </div>
-
-      <div>
-        <div class="pain-list">
-          <div class="pain-item reveal">
-            <div class="pain-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                   stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                   stroke-linejoin="round">
-                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
-                <path d="M12 9v4M12 17h.01"/>
-              </svg>
-            </div>
-            <p class="pain-text">E911 configuration that hasn't been validated since the last office move</p>
-          </div>
-
-          <div class="pain-item reveal" style="transition-delay:.1s">
-            <div class="pain-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                   stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                   stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <line x1="12" y1="8" x2="12" y2="12"/>
-                <line x1="12" y1="16" x2="12.01" y2="16"/>
-              </svg>
-            </div>
-            <p class="pain-text">A migration plan stalled because nobody's sure what's actually in the environment</p>
-          </div>
-
-          <div class="pain-item reveal" style="transition-delay:.2s">
-            <div class="pain-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                   stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                   stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-              </svg>
-            </div>
-            <p class="pain-text">Escalations your team can't resolve because the original engineer left years ago</p>
-          </div>
-        </div>
-
-        <div class="pain-close reveal">
-          We've seen all of it. We know where to look.
-        </div>
+    <div>
+      <div class="problem-list">
+        <p class="problem-item reveal">E911 configuration that hasn&rsquo;t been validated since the last office move</p>
+        <p class="problem-item reveal" style="transition-delay:.09s">A migration plan stalled because nobody&rsquo;s sure what&rsquo;s actually in the environment</p>
+        <p class="problem-item reveal" style="transition-delay:.18s">Escalations your team can&rsquo;t resolve because the original engineer left years ago</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
 
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SERVICES GRID
-════════════════════════════════════════════════════════════════ -->
+<!-- ── SERVICES ──────────────────────────────────────────────────────────── -->
 <section class="services-section" id="services">
-  <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">What We Do</span>
-      <h2 class="section-title">What We Do</h2>
+  <div class="services-inner">
+    <div class="services-header reveal">
+      <p class="section-label">Services</p>
+      <h2>What we do</h2>
     </div>
 
-    <div class="services-grid">
-      <!-- Strategic Audits -->
-      <div class="service-card reveal">
-        <div class="service-card-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-               stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-            <polyline points="10 9 9 9 8 9"/>
-          </svg>
+    <div class="services-list">
+      <div class="service-row reveal">
+        <div>
+          <h3>Strategic Audits</h3>
+          <p class="service-desc">UC environment assessments that surface compliance gaps, migration risk, and configuration problems before they become incidents.</p>
         </div>
-        <h3>Strategic Audits</h3>
-        <p class="service-card-desc">
-          UC environment assessments that surface compliance gaps, migration risk, and configuration problems before they become incidents.
-        </p>
         <div class="service-links">
           <a href="e911-integrity.html" class="service-link">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                 stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
             E911 Strategic Integrity Audit
           </a>
           <a href="migration-audit.html" class="service-link">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                 stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
             Forensic Migration Audit
           </a>
           <a href="operational-audit.html" class="service-link">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                 stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
             Operational Integrity Audit
           </a>
         </div>
       </div>
 
-      <!-- Partner Capacity -->
-      <div class="service-card reveal" style="transition-delay:.1s">
-        <div class="service-card-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-               stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-            <circle cx="9" cy="7" r="4"/>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-          </svg>
+      <div class="service-row reveal" style="transition-delay:.08s">
+        <div>
+          <h3>Partner Capacity</h3>
+          <p class="service-desc">White-label senior engineering for IT service providers who need deep Cisco UC expertise without adding headcount.</p>
         </div>
-        <h3>Partner Capacity</h3>
-        <p class="service-card-desc">
-          White-label senior engineering for IT Service Providers who need deep Cisco UC expertise without adding headcount.
-        </p>
         <div class="service-links">
           <a href="partner-support.html" class="service-link">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                 stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
             Partner Support Programs
           </a>
         </div>
       </div>
 
-      <!-- Systems & Networking -->
-      <div class="service-card reveal" style="transition-delay:.2s">
-        <div class="service-card-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-               stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
-            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
-            <line x1="6" y1="6" x2="6.01" y2="6"/>
-            <line x1="6" y1="18" x2="6.01" y2="18"/>
-          </svg>
+      <div class="service-row reveal" style="transition-delay:.16s">
+        <div>
+          <h3>Systems &amp; Networking</h3>
+          <p class="service-desc">End-to-end infrastructure engineering: CUCM, Amazon Connect, Ubiquiti, and enterprise sysadmin from design through deployment.</p>
         </div>
-        <h3>Systems &amp; Networking</h3>
-        <p class="service-card-desc">
-          End-to-end infrastructure engineering: CUCM, Amazon Connect, Ubiquiti, and enterprise sysadmin from design through deployment.
-        </p>
         <div class="service-links">
           <a href="services.html" class="service-link">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                 stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
             All Systems &amp; Network Services
           </a>
         </div>
@@ -1416,212 +723,91 @@
   </div>
 </section>
 
-<div class="section-divider"></div>
+
+<!-- ── WHY STEPHEN ────────────────────────────────────────────────────────── -->
+<section class="why-section" id="why-stc">
+  <div class="why-inner">
+    <div class="why-copy reveal">
+      <h2>Why work with Stephen</h2>
+      <p>25 years of Cisco UC and infrastructure engineering. Cisco 360 Partner. Veteran-owned practice. Portland Metro, available nationwide. Every engagement is senior-led: you work directly with Stephen, not a team you&rsquo;ll never meet or a junior engineer filling a seat.</p>
+      <a href="about.html" class="arrow-link">About Stephen &rarr;</a>
+    </div>
+    <div class="why-attrs reveal" style="transition-delay:.1s">
+      <div class="why-attr">
+        <h3>Cisco UC specialists</h3>
+        <p>CUCM, Contact Center, Webex, Unity. Not a side practice.</p>
+      </div>
+      <div class="why-attr">
+        <h3>E911 compliance</h3>
+        <p>Kari&rsquo;s Law and RAY BAUM&rsquo;s Act. Work we know cold.</p>
+      </div>
+      <div class="why-attr">
+        <h3>Project-based</h3>
+        <p>No long-term contracts. Accountable to outcomes, not retainers.</p>
+      </div>
+      <div class="why-attr">
+        <h3>Nationwide availability</h3>
+        <p>Portland Metro based. Remote and on-site work, any region.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 
-<!-- ═══════════════════════════════════════════════════════════════
-     HOW IT WORKS
-════════════════════════════════════════════════════════════════ -->
+<!-- ── HOW IT WORKS ───────────────────────────────────────────────────────── -->
 <section class="how-section" id="process">
-  <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">Our Process</span>
-      <h2 class="section-title">How It Works</h2>
-      <p class="section-subtitle">
-        Every engagement works the same way: we look at what's actually there, fix what needs fixing, and document everything so your team can own it going forward.
-      </p>
+  <div class="how-inner">
+    <div class="how-header reveal">
+      <h2>How it works</h2>
+      <p>Every engagement starts the same way: we look at what&rsquo;s actually there, fix what needs fixing, and document everything so your team can own it going forward.</p>
     </div>
 
     <div class="how-steps">
       <div class="how-step reveal">
-        <div class="how-step-number">1</div>
-        <div class="how-step-body">
-          <h3>Look</h3>
-          <p>
-            We assess your environment and document what we find before anyone touches a config.
-          </p>
-        </div>
+        <p class="how-step-num">01</p>
+        <h3>Look</h3>
+        <p>We assess your environment and document what we find before anyone touches a config.</p>
       </div>
-      <div class="how-step reveal" style="transition-delay:.1s">
-        <div class="how-step-number">2</div>
-        <div class="how-step-body">
-          <h3>Fix</h3>
-          <p>
-            We design and implement a solution. Senior hands on every deliverable.
-          </p>
-        </div>
+      <div class="how-step reveal" style="transition-delay:.09s">
+        <p class="how-step-num">02</p>
+        <h3>Fix</h3>
+        <p>We design and implement a solution. Senior hands on every deliverable.</p>
       </div>
-      <div class="how-step reveal" style="transition-delay:.2s">
-        <div class="how-step-number">3</div>
-        <div class="how-step-body">
-          <h3>Hand Off</h3>
-          <p>
-            You get a stable, documented environment your team can actually manage.
-          </p>
-        </div>
+      <div class="how-step reveal" style="transition-delay:.18s">
+        <p class="how-step-num">03</p>
+        <h3>Hand off</h3>
+        <p>You get a stable, documented environment your team can actually manage.</p>
       </div>
     </div>
 
     <div class="how-cta">
       <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
-         class="btn btn-primary" target="_blank" rel="noopener">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2" stroke-linecap="round"
-             stroke-linejoin="round" style="width:16px;height:16px">
-          <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
-        </svg>
-        Talk to Stephen
-      </a>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     TESTIMONIALS
-════════════════════════════════════════════════════════════════ -->
-<section class="testimonials-section" id="testimonials" style="display: none;">
-  <div class="dots-accent" style="top:40px;right:60px;opacity:.1;"></div>
-  <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">Client Feedback</span>
-      <h2 class="section-title">What Clients Say</h2>
-      <p class="section-subtitle">
-        We let the work speak. Here's how clients describe the STC experience.
-      </p>
-    </div>
-
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal">
-        <div class="testimonial-quote-mark">&ldquo;</div>
-        <p class="testimonial-text">
-          After years of Band-Aid fixes from other vendors, STC came in and actually
-          diagnosed what was wrong with our CUCM environment. The E911 audit alone
-          uncovered three critical gaps our previous team had missed.
-        </p>
-        <div class="testimonial-attribution">
-          <div class="testimonial-name">IT Director</div>
-          <div class="testimonial-role">Regional Healthcare Network</div>
-        </div>
-      </div>
-
-      <div class="testimonial-card reveal" style="transition-delay:.1s">
-        <div class="testimonial-quote-mark">&ldquo;</div>
-        <p class="testimonial-text">
-          We brought Solution Track in as a white-label resource for a complex multi-site
-          migration. Their documentation and handoff were the cleanest we've ever received
-          from a subcontractor.
-        </p>
-        <div class="testimonial-attribution">
-          <div class="testimonial-name">Director of Professional Services</div>
-          <div class="testimonial-role">Pacific Northwest MSP</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-
-<!-- ═══════════════════════════════════════════════════════════════
-     DIFFERENTIATORS (WHY STC)
-════════════════════════════════════════════════════════════════ -->
-<section class="diff-section" id="why-stc">
-  <div class="dots-accent diff-dots-1"></div>
-  <div class="dots-accent diff-dots-2"></div>
-  <div class="container">
-    <div class="section-header" style="position:relative;z-index:1;">
-      <span class="eyebrow" style="color:#7db8f7;">Why STC</span>
-      <h2 class="section-title">Why STC</h2>
-    </div>
-
-    <div class="diff-grid">
-      <div class="diff-card reveal">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-white" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
-        <h3>You work with Stephen</h3>
-        <p>Not a team you've never met. Not a junior engineer filling a seat.</p>
-      </div>
-
-      <div class="diff-card reveal" style="transition-delay:.1s">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-white" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0 1 18 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3 1.5 1.5 3-3.75" /></svg>
-        <h3>No long-term contracts</h3>
-        <p>Project-based work. We stay accountable to outcomes, not retainers.</p>
-      </div>
-
-      <div class="diff-card reveal" style="transition-delay:.2s">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-white" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" /></svg>
-        <h3>Cisco UC is all we do</h3>
-        <p>CUCM, Contact Center, Webex, Unity. Not a side practice.</p>
-      </div>
-
-      <div class="diff-card reveal" style="transition-delay:.3s">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-white" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0-10.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.25-8.25-3.286Zm0 13.036h.008v.008H12v-.008Z" /></svg>
-        <h3>E911 specialists</h3>
-        <p>Kari's Law and RAY BAUM's Act compliance is work we know cold.</p>
-      </div>
-
-      <div class="diff-card reveal" style="transition-delay:.4s">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-white" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" /></svg>
-        <h3>Veteran-owned</h3>
-        <p>Portland Metro based. Available nationwide.</p>
-      </div>
-
-    </div>
-
-    <div class="diff-cta">
-      <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
-         class="btn btn-primary" target="_blank" rel="noopener">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2" stroke-linecap="round"
-             stroke-linejoin="round" style="width:16px;height:16px">
-          <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
-        </svg>
-        Talk to Stephen
-      </a>
+         class="btn btn-primary" target="_blank" rel="noopener">Talk to Stephen</a>
     </div>
   </div>
 </section>
 
 
-<!-- ═══════════════════════════════════════════════════════════════
-     FINAL CTA BAND
-════════════════════════════════════════════════════════════════ -->
+<!-- ── CTA BAND ───────────────────────────────────────────────────────────── -->
 <section class="cta-band" id="contact-cta">
-  <h2>Got a UC problem that's been on the backburner too long? Let's talk about it.</h2>
-  <p>
-    No sales pitch. A straight conversation about your environment.
-  </p>
+  <h2>Got a UC problem that&rsquo;s been on the backburner too long? Let&rsquo;s talk about it.</h2>
+  <p>No sales pitch. A straight conversation about your environment.</p>
   <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
-     class="btn btn-primary" target="_blank" rel="noopener">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="2" stroke-linecap="round"
-         stroke-linejoin="round" style="width:16px;height:16px">
-      <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
-    </svg>
-    Book a 20-Minute Call
-  </a>
+     class="btn btn-primary" target="_blank" rel="noopener">Book a 20-Minute Call</a>
 </section>
 
 
-<!-- ═══════════════════════════════════════════════════════════════
-     FOOTER
-════════════════════════════════════════════════════════════════ -->
+<!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
         <img src="https://www.solutiontrackconsulting.com/img/STC-logo-blue2-1.png"
              alt="Solution Track Consulting" />
-        <p>
-          Senior-level Cisco UC, Contact Center, and Network Infrastructure engineering
-          for Enterprise IT teams and Service Providers.
-        </p>
+        <p>Senior-level Cisco UC, Contact Center, and Network Infrastructure engineering for Enterprise IT teams and Service Providers.</p>
         <div class="footer-badge">
-          <a href="https://www.cisco.com/c/en/us/partners.html" class="cisco-badge-link" target="_blank" rel="noopener">
-            <img src="assets/Cisco_360Partners_Logo_Partner_fc.png"
-                 alt="Cisco 360 Partner" />
+          <a href="https://www.cisco.com/c/en/us/partners.html" target="_blank" rel="noopener" aria-label="Cisco 360 Partner">
+            <img src="assets/Cisco_360Partners_Logo_Partner_fc.png" alt="Cisco 360 Partner" loading="lazy" />
           </a>
         </div>
       </div>
@@ -1649,26 +835,19 @@
       <div class="footer-col footer-contact">
         <h4>Contact</h4>
         <p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-               stroke-linejoin="round">
-            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-            <circle cx="12" cy="10" r="3"/>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
           </svg>
           Portland Metro, Oregon
         </p>
         <p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-               stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.41 2 2 0 0 1 3.56 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.46a16 16 0 0 0 5.55 5.55l.92-.92a2 2 0 0 1 2.12-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
           </svg>
           <a href="tel:5039127788">503-912-7788</a>
         </p>
         <p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-               stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect width="20" height="16" x="2" y="4" rx="2"/>
             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
           </svg>
@@ -1678,93 +857,66 @@
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; <span id="footerYear"></span> Solution Track Consulting. All rights reserved.
-         &nbsp;&middot;&nbsp; Veteran-Owned Business</p>
+      <p>&copy; <span id="footerYear"></span> Solution Track Consulting. All rights reserved. &nbsp;&middot;&nbsp; Veteran-Owned Business</p>
       <div class="footer-bottom-links">
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <a href="services.html">Services</a>
+        <a href="privacy-policy.html">Privacy</a>
       </div>
     </div>
   </div>
 </footer>
 
 
-<!-- ═══════════════════════════════════════════════════════════════
-     JS
-════════════════════════════════════════════════════════════════ -->
 <script>
-  // Footer year
   document.getElementById('footerYear').textContent = new Date().getFullYear();
 
-  // Nav shadow on scroll
-  const nav = document.querySelector('.site-nav');
-  window.addEventListener('scroll', () => {
-    nav.style.boxShadow = window.scrollY > 20
-      ? '0 4px 24px rgba(0,0,0,.4)'
-      : 'none';
-  }, { passive: true });
-
-  // Mobile nav toggle
   const toggle    = document.getElementById('navToggle');
   const mobileNav = document.getElementById('navMobile');
 
-  function openMobileNav() {
+  function openNav() {
     mobileNav.classList.add('open');
     toggle.classList.add('open');
     toggle.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
   }
-  function closeMobileNav() {
+  function closeNav() {
     mobileNav.classList.remove('open');
     toggle.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
 
-  toggle.addEventListener('click', (e) => {
+  toggle.addEventListener('click', e => {
     e.stopPropagation();
-    mobileNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
+    mobileNav.classList.contains('open') ? closeNav() : openNav();
   });
-
-  mobileNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', closeMobileNav);
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+  document.addEventListener('click', e => {
+    if (!document.querySelector('.site-nav').contains(e.target) && !mobileNav.contains(e.target)) closeNav();
   });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
 
-  document.addEventListener('click', (e) => {
-    if (!nav.contains(e.target) && !mobileNav.contains(e.target)) {
-      closeMobileNav();
-    }
-  });
-
-  // Escape key closes mobile nav
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMobileNav();
-  });
-
-  // Page fade transition
   document.querySelectorAll('a[href]').forEach(link => {
     const href = link.getAttribute('href');
     if (href && !href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel') && !href.startsWith('#')) {
       link.addEventListener('click', function(e) {
         e.preventDefault();
         document.body.classList.add('fade-out');
-        setTimeout(() => { window.location.href = href; }, 250);
+        setTimeout(() => { window.location.href = href; }, 220);
       });
     }
   });
 
-  // Scroll reveal
-  const revealElements = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries) => {
+  const revealObs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
+        revealObs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
-  revealElements.forEach(el => revealObserver.observe(el));
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 </script>
 
 </body>
