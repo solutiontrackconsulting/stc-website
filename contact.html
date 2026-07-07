@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | Solution Track Consulting</title>
-  <meta name="description" content="Talk to Stephen Frahm about your Cisco UC environment, E911 compliance gaps, or a pending migration. Book a 20-minute call or send a message.">
+  <meta name="description" content="Talk to Stephen Frahm about your Cisco UC environment, E911 compliance gaps, or a pending migration. Book a 20-minute call or email directly.">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -211,84 +211,10 @@
       border-bottom: 1px solid var(--border);
     }
     .contact-inner {
-      max-width: var(--max-w);
+      max-width: 560px;
       margin: 0 auto;
       padding: 96px 24px;
-      display: grid;
-      grid-template-columns: 1fr 360px;
-      gap: 72px;
-      align-items: start;
     }
-
-    /* ── Form ── */
-    .contact-form-head {
-      font-family: var(--font-head);
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--blue);
-      letter-spacing: 0.08em;
-      margin-bottom: 28px;
-    }
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .form-field {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .form-field label {
-      font-family: var(--font-head);
-      font-size: 0.8125rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .form-field label .opt {
-      font-weight: 400;
-      color: var(--text-mid);
-      font-family: var(--font-body);
-    }
-    .form-field input,
-    .form-field select,
-    .form-field textarea {
-      font-family: var(--font-body);
-      font-size: 0.9375rem;
-      color: var(--text);
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      padding: 11px 14px;
-      outline: none;
-      transition: border-color 0.18s;
-      width: 100%;
-      appearance: none;
-      -webkit-appearance: none;
-    }
-    .form-field input::placeholder,
-    .form-field textarea::placeholder { color: var(--text-mid); }
-    .form-field input:focus,
-    .form-field select:focus,
-    .form-field textarea:focus {
-      border-color: var(--blue);
-      outline: 2px solid var(--blue);
-      outline-offset: 0;
-    }
-    .form-field select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B7A8D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      background-size: 16px;
-      padding-right: 36px;
-      cursor: pointer;
-    }
-    .form-field textarea { resize: vertical; min-height: 120px; }
 
     /* ── Contact info panel (Mission Blue) ── */
     .contact-panel {
@@ -545,14 +471,12 @@
       .nav-toggle { display: flex; }
     }
     @media (max-width: 860px) {
-      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
       .footer-top { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
       .page-header { padding: 64px 20px 56px; }
       .contact-inner { padding-left: 20px; padding-right: 20px; }
       .faq-inner { padding-left: 20px; padding-right: 20px; }
-      .form-row { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
@@ -618,7 +542,7 @@
 <header class="page-header">
   <div class="page-header-inner">
     <h1>Let&rsquo;s talk.</h1>
-    <p class="page-header-sub">Have a question or a UC environment issue you need help with? Reach out and I will get back to you within one business day.</p>
+    <p class="page-header-sub">Have a question or a UC environment issue you need help with? Reach out and I&rsquo;ll get back to you within one business day.</p>
   </div>
 </header>
 
@@ -627,60 +551,9 @@
 <section class="contact-section" id="contact">
   <div class="contact-inner">
 
-    <!-- Form -->
-    <div class="reveal">
-      <p class="contact-form-head">Send a Message</p>
-      <form class="contact-form" aria-label="Contact form" onsubmit="return false;">
-        <div class="form-row">
-          <div class="form-field">
-            <label for="cf-name">Name</label>
-            <input type="text" id="cf-name" name="name" placeholder="Your name" autocomplete="name" required />
-          </div>
-          <div class="form-field">
-            <label for="cf-email">Email</label>
-            <input type="email" id="cf-email" name="email" placeholder="you@company.com" autocomplete="email" required />
-          </div>
-        </div>
-
-        <div class="form-field">
-          <label for="cf-company">Company <span class="opt">(optional)</span></label>
-          <input type="text" id="cf-company" name="company" placeholder="Organization name" autocomplete="organization" />
-        </div>
-
-        <div class="form-field">
-          <label for="cf-topic">What can I help with?</label>
-          <select id="cf-topic" name="topic" required>
-            <option value="">Select a topic</option>
-            <option value="e911">E911 Compliance</option>
-            <option value="migration">Migration Audit</option>
-            <option value="operational">Operational Audit</option>
-            <option value="partner">Partner / White-Label Capacity</option>
-            <option value="cisco">Cisco UC Support</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-
-        <div class="form-field">
-          <label for="cf-message">Message</label>
-          <textarea id="cf-message" name="message" rows="5"
-            placeholder="Briefly describe your environment and what you&rsquo;re dealing with." required></textarea>
-        </div>
-
-        <button type="button" class="btn btn-primary btn-block"
-          onclick="alert('Demo form. Please use the contact details or book a call.')">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-               stroke-linejoin="round" style="width:15px;height:15px" aria-hidden="true">
-            <path d="m22 2-7 20-4-9-9-4 20-7z"/>
-          </svg>
-          Send Message
-        </button>
-      </form>
-    </div>
-
     <!-- Info panel -->
-    <div class="contact-panel reveal" style="transition-delay:.1s" aria-label="Contact information">
-      <p class="contact-panel-head">Direct Contact</p>
+    <div class="contact-panel reveal" aria-label="Contact information">
+      <p class="contact-panel-head">Direct contact</p>
 
       <div class="contact-detail">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -717,7 +590,6 @@
 
       <hr class="contact-panel-divider" />
 
-      <p class="contact-panel-skip">Or skip the form</p>
       <a href="https://outlook.office.com/book/SolutionTrackConsulting1@NETORGFT8412481.onmicrosoft.com/s/bZnD75cqX0WYLCDX9ZqSZA2"
          class="btn btn-orange" target="_blank" rel="noopener">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -763,7 +635,7 @@
         </button>
         <div class="faq-body" id="faq-1-body" role="region" aria-labelledby="faq-1">
           <div class="faq-body-inner">
-            Yes. While I am based in Portland, I work with enterprise IT teams and service providers across the U.S. Most audit and engineering work can be performed remotely, with onsite travel arranged as needed.
+            Yes. While I&rsquo;m based in Portland, I work with enterprise IT teams and service providers across the U.S. Most audit and engineering work can be performed remotely, with onsite travel arranged as needed.
           </div>
         </div>
       </div>
@@ -780,7 +652,7 @@
         </button>
         <div class="faq-body" id="faq-2-body" role="region" aria-labelledby="faq-2">
           <div class="faq-body-inner">
-            Mid-market to enterprise. Typically organizations with 200 or more seats, or service providers managing multi-client UC environments. That said, if the problem is complex and the stakes are high, I am interested in the conversation.
+            Mid-market to enterprise. Typically organizations with 200 or more seats, or service providers managing multi-client UC environments. That said, if the problem is complex and the stakes are high, I&rsquo;m interested in the conversation.
           </div>
         </div>
       </div>
@@ -831,9 +703,9 @@
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
-          <li><a href="e911-integrity.html">E911 Integrity Audit</a></li>
-          <li><a href="migration-audit.html">Forensic Migration Audit</a></li>
-          <li><a href="operational-audit.html">Operational Integrity Audit</a></li>
+          <li><a href="e911-integrity.html">E911 Audit</a></li>
+          <li><a href="migration-audit.html">Migration Audit</a></li>
+          <li><a href="operational-audit.html">Operational Audit</a></li>
           <li><a href="partner-support.html">Partner Capacity</a></li>
           <li><a href="services.html">Systems &amp; Networking</a></li>
         </ul>
